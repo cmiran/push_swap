@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 20:05:23 by cmiran            #+#    #+#              #
-#    Updated: 2019/04/27 19:14:06 by cmiran           ###   ########.fr        #
+#    Updated: 2019/05/08 20:23:44 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,32 +15,40 @@ NAME= push_swap
 CC= gcc
 CFLAGS= -Wall -Wextra -Werror
 
-SRC_NAME= main.c
-SRC= $(addprefix ./,$(SRC_NAME))
+SRC= main.c
 
 LIB= ./libft/
 
-OBJ= $(addprefix obj/,$(SRC:.c=.o))
+INC= $(addprefix -I, .)
 
-all: $(NAME)
+OBJDIR= ./obj/
+OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-$(NAME): lib obj
-	$(CC) $(CFLAGS) $(OBJ) -L $(LIB) -lft -o $@
+
+all: lib $(NAME)
+
+$(NAME): $(OBJ)
+	@echo "\033[0;32m  Creating executable...\033[0m"
+	@$(CC) $(CFLAGS) $^ -L $(LIB) -lft -o $@
+	@ls push_swap
 
 lib:
-	make -C ./libft
+	@make -C ./libft
 
-obj:
-	mkdir -p obj
-	$(CC) $(CFLAGS) -o $(OBJ) -c $(SRC) -I ./ -I ./libft
+$(OBJDIR)%.o: %.c
+	@mkdir -p ./obj
+	@echo "\033[0;33m      Compiling:\033[0m" $<
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INC)
 
 clean:
-	make clean -C ./libft
-	rm -rf $(OBJ) obj/
+	@make clean -C ./libft
+	@echo "\033[0;31m  Deleting dependencies...\033[0m"
+	@rm -f $(OBJ)
 
 fclean: clean
-	make fclean -C ./libft
-	rm -f $(NAME)
+	@make fclean -C ./libft
+	@echo "\033[0;31mDeleting executable...\033[0m"
+	@rm -f $(NAME)
 
 re: fclean all
 
