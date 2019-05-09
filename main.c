@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/09 01:58:58 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/09 16:35:34 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_lst		*init_node(void)
 intmax_t	ps_atoi(char *str, int *index)
 {
 	intmax_t	nbr;
-	int		sign;
+	int			sign;
 
 	nbr = 0;
 	sign = 1;
@@ -40,7 +40,7 @@ intmax_t	ps_atoi(char *str, int *index)
 	}
 	while (ft_isdigit(str[*index]))
 	{
-		nbr = nbr * 10 + *str - '0';
+		nbr = nbr * 10 + str[*index] - '0';
 		(*index)++;
 	}
 	return (nbr * sign);
@@ -48,10 +48,10 @@ intmax_t	ps_atoi(char *str, int *index)
 
 t_lst		*parse(int ac, char **av, t_lst *start)
 {
-	t_lst	*node;
-	int		i;
-	int		j;
-	char	*str;
+	t_lst		*node;
+	int			i;
+	int			j;
+	char		*str;
 
 	node = start;
 	i = 0;
@@ -88,18 +88,26 @@ int			main(int ac, char **av)
 			return (0);
 	}
 	lst = var.a;
-	while (lst)
+
+// PRINT
+	s(&lst);
+	r(&lst);
+	while (lst->next)
 	{
 		printf("%li\n", lst->val);
 		lst = lst->next;
 	}
+
+// FREE
 	while (var.a)
 	{
-		tmp = var.a->next;
+		tmp = var.a;
 		var.a->val = 0;
 		var.a->next = 0;
-		free(var.a);
-		var.a = tmp;
+		var.a = var.a->next;
+		free(tmp);
 	}
+	printf("%p\n", var.a);
+
 	return (0);
 }

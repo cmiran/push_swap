@@ -6,16 +6,19 @@
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 20:05:23 by cmiran            #+#    #+#              #
-#    Updated: 2019/05/09 02:08:44 by cmiran           ###   ########.fr        #
+#    Updated: 2019/05/09 16:34:55 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 
-CC= gcc
+CC= gcc -g
 CFLAGS= -Wall -Wextra -Werror
 
-SRC= main.c
+SRC= main.c\
+	 swap.c\
+	 push.c\
+	 rotate.c
 
 LIB= libft/
 
@@ -41,12 +44,12 @@ $(OBJDIR)%.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(INC)
 
 clean:
-	@echo "\033[0;31m  Deleting:\033[0m" ./$(OBJDIR)
+	@echo "\033[0;31mDeleting:\033[0m"	./$(OBJDIR)
 	@rm -rf $(OBJ) $(OBJDIR)
 
 fclean: clean
 	@make fclean -C ./libft
-	@echo "\033[0;31mDeleting:\033[0m" ./$(NAME)
+	@echo "\033[0;31mDeleting:\033[0m"	./$(NAME)
 	@rm -f $(NAME)
 
 re: fclean all
