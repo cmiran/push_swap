@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/08 20:25:08 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/09 01:58:58 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_lst		*init_node(void)
 intmax_t	ps_atoi(char *str, int *index)
 {
 	intmax_t	nbr;
-	char		sign;
+	int		sign;
 
 	nbr = 0;
 	sign = 1;
@@ -36,7 +36,7 @@ intmax_t	ps_atoi(char *str, int *index)
 	{
 		if (*str == '-')
 			sign *= -1;
-		(*index)++;;
+		(*index)++;
 	}
 	while (ft_isdigit(str[*index]))
 	{
@@ -54,8 +54,8 @@ t_lst		*parse(int ac, char **av, t_lst *start)
 	char	*str;
 
 	node = start;
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (++i < ac)
 	{
 		str = av[i];
 		j = 0;
@@ -70,7 +70,6 @@ t_lst		*parse(int ac, char **av, t_lst *start)
 				node = node->next;
 			}
 		}
-		i++;
 	}
 	return (start);
 }
