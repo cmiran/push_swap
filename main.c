@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/09 16:35:34 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/09 18:34:11 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			main(int ac, char **av)
 {
 	t_var	var;
 	t_lst	*lst;
-	t_lst 	*tmp;
+	t_lst	*tmp;
 
 	if (!(var.a = init_node()))
 		return (0);
