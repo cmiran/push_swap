@@ -6,11 +6,25 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/09 18:55:55 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/10 19:05:22 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// PRINT
+void	print(t_lst **alst)
+{
+	t_lst	*start;
+
+	start = *alst;
+	while (*alst)
+	{
+		printf("%li\n", (*alst)->val);
+		*alst = (*alst)->next;
+	}
+	*alst = start;
+}
 
 t_lst		*init_node(void)
 {
@@ -20,6 +34,17 @@ t_lst		*init_node(void)
 		return (0);
 	node->val = 0;
 	node->next = 0;
+/*	if (!(*alst)->start)
+	{
+		node->len = 1;
+		node->start = node;
+	}
+	else
+	{
+		(*alst)->len++;
+		node->len = (*alst)->len;
+		node->start = (*alst)->start;
+	}*/
 	return (node);
 }
 
@@ -51,22 +76,18 @@ t_lst		*parse(int ac, char **av, t_lst *start)
 	t_lst		*node;
 	int			i;
 	int			j;
-	char		*str;
 
 	node = start;
 	i = 0;
 	while (++i < ac)
 	{
-		str = av[i];
 		j = 0;
-		while (str[j])
+		while (av[i][j])
 		{
-			if (!(node->val = ps_atoi(str, &j)))
-				return (0);
-			else
+			node->val = ps_atoi(av[i], &j);
+			if (av[i][j] || i + 1 < ac)
 			{
-				if (!(node->next = init_node()))
-					return (0);
+				node->next = init_node();
 				node = node->next;
 			}
 		}
@@ -77,37 +98,57 @@ t_lst		*parse(int ac, char **av, t_lst *start)
 int			main(int ac, char **av)
 {
 	t_var	var;
-	t_lst	*lst;
 	t_lst	*tmp;
 
-	if (!(var.a = init_node()))
-		return (0);
+	var.a = init_node();
 	if (ac > 1)
 	{
 		if (!(var.a = parse(ac, av, var.a)))
 			return (0);
 	}
-	lst = var.a;
+
+	var.b = NULL;
+// TEST
+	s(&var.a);
+	rv(&var.a);
+	r(&var.a);
+	s(&var.a);
+	rv(&var.a);
+	p(&var.a, &var.b);
+	p(&var.a, &var.b);
+	p(&var.a, &var.b);
+	rr(&var.a, &var.b);
+	rr(&var.a, &var.b);
+	rrr(&var.a, &var.b);
+	rrr(&var.a, &var.b);
+	ss(&var.a, &var.b);
+	p(&var.b, &var.a);
+	p(&var.b, &var.a);
+	p(&var.b, &var.a);
 
 // PRINT
-	s(&lst);
-	r(&lst);
-	while (lst->next)
-	{
-		printf("%li\n", lst->val);
-		lst = lst->next;
-	}
+	print(&var.a);
+	if (var.b)
+		printf("\n");
+	print(&var.b);
 
 // FREE
 	while (var.a)
 	{
-		tmp = var.a;
+		tmp = var.a->next;
 		var.a->val = 0;
-		var.a->next = 0;
-		var.a = var.a->next;
-		free(tmp);
+		var.a->next = NULL;
+		free(var.a);
+		var.a = tmp;
 	}
-	printf("%p\n", var.a);
+	while (var.b)
+	{
+		tmp = var.b->next;
+		var.b->val = 0;
+		var.b->next = NULL;
+		free(var.b);
+		var.b = tmp;
+	}
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:16:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/09 18:55:35 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/10 18:37:44 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	r(t_lst **alst)
 {
-	
 	t_lst		*start;
 	t_lst		*tmp;
 
@@ -22,10 +21,10 @@ void	r(t_lst **alst)
 	tmp = *alst;
 	while ((*alst)->next)
 		*alst = (*alst)->next;
-	(*alst)->val = tmp->val;
 	(*alst)->next = init_node();
-	*alst = start;
+	(*alst)->next->val = tmp->val;
 	free(tmp);
+	*alst = start;
 }
 
 void	rr(t_lst **a, t_lst **b)
@@ -37,17 +36,15 @@ void	rr(t_lst **a, t_lst **b)
 void	rv(t_lst **alst)
 {
 	t_lst		*start;
-	t_lst		*tmp;
 
 	start = init_node();
 	start->next = *alst;
 	while ((*alst)->next->next)
 		*alst = (*alst)->next;
 	start->val = (*alst)->next->val;
-	tmp = (*alst)->next;
+	free((*alst)->next);
 	(*alst)->next = 0;
 	*alst = start;
-	free(tmp);
 }
 
 void	rrr(t_lst **a, t_lst **b)
