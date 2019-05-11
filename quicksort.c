@@ -6,15 +6,16 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/10 19:05:21 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/10 21:21:49 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	partition(t_var	var)
+int	partition(t_var	var)
 {
 	var.pivot = var.a->val;
+	i = 0;
 	while (var.a->val >= var.pivot)
 	{
 		p(&var.a, &var.b);

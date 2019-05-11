@@ -6,14 +6,14 @@
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 20:05:23 by cmiran            #+#    #+#              #
-#    Updated: 2019/05/10 15:04:47 by cmiran           ###   ########.fr        #
+#    Updated: 2019/05/10 23:00:17 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 
-CC= gcc
-CFLAGS= -Wall -Wextra -Werror
+CC= gcc -g
+CFLAGS= #-Wall -Wextra -Werror
 
 SRC= main.c\
 	 swap.c\
