@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/11 10:13:02 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/11 17:28:56 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,26 @@
 # include <unistd.h>
 
 # include <stdio.h>
-# define PRINT	print(&var.a); var.b ? printf("\n") && print(&var.b) && printf("\n") : 0;
-/*
-typedef struct	s_lst_lenght
-{
-	int	n;
-}		t_len;
-*/
+# define PRINT(a, b)	printf("A\n"); print(&a);\
+	b ? printf("\nB\n") && print(&b) && printf("\n") : 0;
+
+# define SA(alst)	write(1, "sa\n", 3); s(&alst);
+# define SB(alst)	write(1, "sb\n", 3); s(&alst);
+# define SS(a, b)	write(1, "ss\n", 3); ss(&a, &b);
+# define PA(b, a)	write(1, "pa\n", 3); p(&b, &a);
+# define PB(a, b)	write(1, "pb\n", 3); p(&a, &b);
+# define RA(alst)	write(1, "ra\n", 3); r(&alst);
+# define RB(alst)	write(1, "rb\n", 3); r(&alst);
+# define RR(a, b)	write(1, "ss\n", 3); rr(&a, &b);
+# define RRA(alst)	write(1, "rra\n", 4); rv(&alst);
+# define RRB(alst)	write(1, "rrb\n", 4); rv(&alst);
+# define RRR(a, b)	write(1, "rrr\n", 4); rrr(&a, &b);
+
 typedef struct	s_node
 {
 	intmax_t	val;
 	int		*n;
-//	t_len		*len;
 	struct s_node	*next;
-//	struct s_node	*start;
 }		t_lst;
 
 typedef struct	s_variables
@@ -46,6 +52,12 @@ t_lst		*init_node(int *n);
 /*
 ** t_lst	*parse(int ac, char **av, t_lst *start)
 ** intmax_t	ps_atoi(char *str, int *index)
+*/
+int	print(t_lst **alst);
+
+t_lst		*quicksort(t_lst *a, t_lst *b, int lo, int hi);
+/*
+**
 */
 
 void	s(t_lst **start);

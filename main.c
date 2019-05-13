@@ -6,67 +6,28 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/11 10:17:42 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/11 20:43:59 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// PRINT
-int	print(t_lst **alst)
-{
-	t_lst	*start;
-
-	start = *alst;
-	while (*alst)
-	{
-		printf("%li\n", (*alst)->val);
-		printf("len : %i\n", (*(*alst)->n));
-		*alst = (*alst)->next;
-	}
-	*alst = start;
-	return (1);
-}
-
 t_lst		*init_node(int *n)
 {
 	t_lst *node;
-	int	len;
 
 	if (!(node = (t_lst *)malloc(sizeof(t_lst))))
 		return (0);
 	node->val = 0;
 	node->next = 0;
-	len = 1;
 	if (!n)
-		(*node->n) = 1;
-	else
 	{
-		(*n)++;
-		node->n = n;
-	}
-/*	if (!alst->len)
-	{
-		if (!(node->len = (t_len *)malloc(sizeof(t_len))))
+		if (!(node->n = (int *)malloc(sizeof(int))))
 			return (0);
-		(*node->len->n) = 1;
+		(*node->n) = 1;
 	}
 	else
-	{
-		(*alst->len->n)++;
-		node->len = alst->len;
-	}
-	if (!(*alst)->start)
-	{
-		node->len = 1;
-		node->start = node;
-	}
-	else
-	{
-		(*alst)->len++;
-		node->len = (*alst)->len;
-		node->start = (*alst)->start;
-	}*/
+		node->n = n;
 	return (node);
 }
 
@@ -111,10 +72,28 @@ t_lst		*parse(int ac, char **av, t_lst *start)
 			{
 				node->next = init_node(start->n);
 				node = node->next;
+				(*node->n)++;
 			}
 		}
 	}
 	return (start);
+}
+
+// PRINT
+int	print(t_lst **alst)
+{
+	t_lst	*start;
+
+	start = *alst;
+	while (*alst)
+	{
+		printf("%li\n", (*alst)->val);
+		*alst = (*alst)->next;
+	}
+	*alst = start;
+	if ((*alst)->n)
+		printf("len : %i\n", (*(*alst)->n));
+	return (1);
 }
 
 int			main(int ac, char **av)
@@ -123,16 +102,17 @@ int			main(int ac, char **av)
 	t_lst	*tmp;
 
 	var.a = NULL;
+	var.b = NULL;
 	var.a = init_node(0);
 	if (ac > 1)
 	{
 		if (!(var.a = parse(ac, av, var.a)))
 			return (0);
+		var.a = quicksort(var.a, var.b, 0, *(var.a->n));
 	}
-	
-	var.b = NULL;
+	PRINT(var.a, var.b);	
 // TEST
-	p(&var.a, &var.b);
+/*	p(&var.a, &var.b);
 	PRINT;
 	p(&var.a, &var.b);
 	PRINT;
@@ -155,7 +135,7 @@ int			main(int ac, char **av)
 	p(&var.b, &var.a);
 	PRINT;
 	p(&var.b, &var.a);
-	PRINT;
+	PRINT;*/
 
 // FREE
 	while (var.a)
@@ -163,6 +143,7 @@ int			main(int ac, char **av)
 		tmp = var.a->next;
 		var.a->val = 0;
 		var.a->next = NULL;
+//		var.a->n ? free(var.a->n) : 0;
 		free(var.a);
 		var.a = tmp;
 	}
@@ -171,6 +152,7 @@ int			main(int ac, char **av)
 		tmp = var.b->next;
 		var.b->val = 0;
 		var.b->next = NULL;
+//		(*var.a->n) ? free(var.a->n) : 0;
 		free(var.b);
 		var.b = tmp;
 	}
