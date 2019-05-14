@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/11 21:09:39 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/14 16:48:23 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	partition(t_lst *a, t_lst *b, int lo, int hi)
 		PA(b, a);
 		PRINT(a, b);
 	}
+	printf("lo : %d, hi : %d\n", lo, hi);
 	printf("i : %i\nend\n\n", i);
 	return (i);
 }
@@ -70,12 +71,16 @@ int	partition(t_lst *a, t_lst *b, int lo, int hi)
 t_lst	*quicksort(t_lst *a, t_lst *b, int lo, int hi)
 {
 	int	p;
+	int	i;;
 	
 	if (lo < hi)
 	{
 		p = partition(a, b, lo, hi);
-		quicksort(a, b, lo, p - 1);
-		quicksort(a, b, p + 1, hi);
+		quicksort(a, b, lo, p);
+		i = p;
+		while (p--)
+			RA;
+		quicksort(a, b, p, hi);
 	}
 	return (a);
 }
