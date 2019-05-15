@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 12:50:59 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:32:26 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,34 @@ t_lst	*sort_alst(t_lst *alst, char c)
 int	partition(t_lst **a, t_lst **b, int lo, int hi)
 {
 	intmax_t	pivot;
-	int	i;
-	int	j;
-	int	marker = -1;
+	int			i;
+	int			j;
+	int			k;
+	int			n;
 	
-	printf("PARTITION---------------------------------\n");
-	printf("lo : %d, hi : %d\n\n", lo, hi);
-
+//	printf("PARTITION---------------------------------\n");
+//	printf("lo : %d, hi : %d\n\n", lo, hi);
+	
+	n = lo;
+	if (lo)
+	{
+//		printf("---ROTATE1\n");
+		while (n--)
+		{
+			RA(a);
+//			PRINT(a, 0);	
+//			printf("\n");
+		}
+		n = lo;
+//		printf("---END--ROTATE1\n\n");
+	}
 	pivot = (*a)->val;
 	i = lo;
 	j = lo;
+	k = -1;
 	while (j++ < hi)
 	{
-		printf("j : %i\n", j);
+//		printf("j : %i\n", j);
 		if ((*a)->val <= pivot)
 		{
 			PB(a, b);
@@ -52,48 +67,50 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		else
 		{
 			RA(a);
-			marker++; 
-
+			k++; 
 		}
-		PRINT(a, b);
+//		PRINT(a, b);
 	}
-	while (marker--)
+	while (k > 0 && k--)
 	{
 		RRA(a);
-		PRINT(a, 0);
-		printf("\n");
+//		PRINT(a, 0);
+//		printf("\n");
 	}
 	RRR(a, b);
-	PRINT(a, b);
+//	PRINT(a, b);
 	j = (*(*b)->n);
-	printf("\nj : \n%i\n", j);
+//	printf("\nj : \n%i\n", j);
 	while (j--)
 	{
 		PA(b, a);
-		PRINT(a, b);
+//		PRINT(a, b);
 	}
-	printf("i : %i\n---END\n\n", i);
+//	printf("\n");
+	if (n)
+	{
+//		printf("---ROTATE2\n");
+		while (n--)
+		{
+			RRA(a);
+//			PRINT(a, b);
+//			printf("\n");
+		}
+//		printf("---END--ROTATE1\n\n");
+	}
+//	printf("i : %i\n---END\n\n", i);
 	return (i);
 }
 
-t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi, int i)
+t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi)
 {
 	int	p;
 	
 	if (lo < hi - 1)
 	{
 		p = partition(a, b, lo, hi);
-		quicksort(a, b, lo, p, i);
-		if (i < 0)
-		{
-			while (i++ < p)
-			{
-				RA(a);
-				PRINT(a, 0);
-				printf("\n");
-			}
-		}
-		quicksort(a, b, p, hi, i);
+		quicksort(a, b, lo, p);
+		quicksort(a, b, p, hi);
 	}
 	return (*a);
 }

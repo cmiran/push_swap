@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 12:48:49 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 14:57:29 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_lst		*init_node(int *n);
 */
 int	print(t_lst **alst);
 
-t_lst		*quicksort(t_lst **a, t_lst **b, int lo, int hi, int i);
+t_lst		*quicksort(t_lst **a, t_lst **b, int lo, int hi);
 /*
 **
 */
