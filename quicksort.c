@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 11:27:49 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:50:59 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 	intmax_t	pivot;
 	int	i;
 	int	j;
+	int	marker = -1;
 	
 	printf("PARTITION---------------------------------\n");
 	printf("lo : %d, hi : %d\n\n", lo, hi);
@@ -51,8 +52,16 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		else
 		{
 			RA(a);
+			marker++; 
+
 		}
 		PRINT(a, b);
+	}
+	while (marker--)
+	{
+		RRA(a);
+		PRINT(a, 0);
+		printf("\n");
 	}
 	RRR(a, b);
 	PRINT(a, b);
@@ -63,24 +72,28 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		PA(b, a);
 		PRINT(a, b);
 	}
-	printf("\nlo : %d, hi : %d\n", lo, hi);
-	printf("i : %i\nend\n\n", i);
+	printf("i : %i\n---END\n\n", i);
 	return (i);
 }
 
-t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi)
+t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi, int i)
 {
 	int	p;
-//	int	i;
 	
-	if (lo < hi)
+	if (lo < hi - 1)
 	{
 		p = partition(a, b, lo, hi);
-		quicksort(a, b, lo, p);
-//		i = p;
-//		while (p--)
-//			RA;
-		quicksort(a, b, p, hi);
+		quicksort(a, b, lo, p, i);
+		if (i < 0)
+		{
+			while (i++ < p)
+			{
+				RA(a);
+				PRINT(a, 0);
+				printf("\n");
+			}
+		}
+		quicksort(a, b, p, hi, i);
 	}
 	return (*a);
 }

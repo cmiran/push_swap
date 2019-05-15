@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 11:14:33 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:48:26 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int			main(int ac, char **av)
 {
 	t_var	var;
 	t_lst	*tmp;
+	static int	marker = -1;
 
 	var.a = NULL;
 	var.b = NULL;
@@ -110,7 +111,7 @@ int			main(int ac, char **av)
 	{
 		if (!(var.a = parse(ac, av, var.a)))
 			return (0);
-		var.a = quicksort(&var.a, &var.b, 0, *(var.a->n));
+		var.a = quicksort(&var.a, &var.b, 0, *(var.a->n), marker);
 	}
 //	PRINT(&var.a, &var.b);	
 // TEST
