@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 20:18:42 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 21:38:16 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		n = lo;
 //		printf("---END--ROTATE1\n\n");
 	}
+
 	if ((*a)->val > (*a)->next->val)
 	{
 		SA(a);
@@ -162,7 +163,8 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //		PRINT(a, b);
 	}
 //	printf("\n");
-//	rotate2(a, lo);
+
+//	rotate2(a, lo);	
 	if (n)
 	{
 //		printf("---ROTATE2\n");
@@ -175,6 +177,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //		printf("---END--ROTATE2\n\n");
 	}
 //	printf("i : %i\n---END\n\n", i);
+	
 	return (i);
 }
 
