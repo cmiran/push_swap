@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 14:57:29 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 19:28:14 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_variables
 {
 	t_lst	*a;
 	t_lst	*b;
+	int		*n;
 	intmax_t	pivot;
 }		t_var;
 

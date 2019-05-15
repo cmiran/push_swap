@@ -6,26 +6,95 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 17:32:26 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 19:56:32 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 /*
-t_lst	*sort_alst(t_lst *alst, char c)
+void	dumbsort(t_lst **a, t_lst **b)
 {
 	int	i;
-	int	val;
 
 	i = 0;
-	while (i < (*alst->n) - 1)	
+	while (i < (*(*a)->n))	
 	{
-		if (alst->val > alst->next->val)
-			S(alst, c);
-		R(alst, c);
+		if ((*a)->val > (*a)->next->val)
+			SA(a);
+		RA(a);
 		i++;
 	}
-	return (alst);
+	i = 0;
+	while (i < (*(*b)->n) - 1)	
+	{
+		if ((*b)->val > (*b)->next->val)
+			SB(b);
+		RB(b);
+		i++;
+	}
+	RB(b);
+}
+*/
+/*
+void	rotate2(t_lst **a, int lo)
+{
+	if (lo)
+	{
+		if (lo > ((*(*a)->n) / 2))
+		{
+			lo = ((*(*a)->n) / 2);
+//			printf("---ROTATE1\n");
+			while (lo--)
+			{
+				RA(a);
+//				PRINT(a, 0);	
+//				printf("\n");
+			}
+//			printf("---END--ROTATE1\n\n");
+		}
+		else
+		{
+//			printf("---ROTATE1\n");
+			while (lo--)
+			{
+				RRA(a);
+//				PRINT(a, 0);	
+//				printf("\n");
+			}
+//			printf("---END--ROTATE1\n\n");
+		}
+	}
+}
+
+void	rotate1(t_lst **a, int lo)
+{
+	if (lo)
+	{
+		if (lo > ((*(*a)->n) / 2))
+		{
+			lo = ((*(*a)->n) / 2);
+//			printf("---ROTATE1\n");
+			while (lo--)
+			{
+				RRA(a);
+//				PRINT(a, 0);	
+//				printf("\n");
+			}
+//			printf("---END--ROTATE1\n\n");
+		}
+		else
+		{
+//			printf("---ROTATE1\n");
+			while (lo--)
+			{
+				RA(a);
+//				PRINT(a, 0);	
+//				printf("\n");
+			}
+//			printf("---END--ROTATE1\n\n");
+		}
+	}
 }
 */
 int	partition(t_lst **a, t_lst **b, int lo, int hi)
@@ -39,6 +108,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
 	
+//	rotate1(a, lo);
 	n = lo;
 	if (lo)
 	{
@@ -51,6 +121,10 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		}
 		n = lo;
 //		printf("---END--ROTATE1\n\n");
+	}
+	if ((*a)->val > (*a)->next->val)
+	{
+		SA(a);
 	}
 	pivot = (*a)->val;
 	i = lo;
@@ -71,6 +145,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		}
 //		PRINT(a, b);
 	}
+//	printf("k : %d\n", k);
 	while (k > 0 && k--)
 	{
 		RRA(a);
@@ -87,6 +162,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //		PRINT(a, b);
 	}
 //	printf("\n");
+//	rotate2(a, lo);
 	if (n)
 	{
 //		printf("---ROTATE2\n");
@@ -96,7 +172,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //			PRINT(a, b);
 //			printf("\n");
 		}
-//		printf("---END--ROTATE1\n\n");
+//		printf("---END--ROTATE2\n\n");
 	}
 //	printf("i : %i\n---END\n\n", i);
 	return (i);
@@ -110,7 +186,23 @@ t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi)
 	{
 		p = partition(a, b, lo, hi);
 		quicksort(a, b, lo, p);
+//		printf("LOL1\n");
+//		**n = p;
 		quicksort(a, b, p, hi);
 	}
+//	printf("LOL2\n");
 	return (*a);
 }
+/*
+t_lst	*quicksort2(t_lst **a, t_lst **b, int lo, int hi, int **n)
+{
+	int	p;
+	
+	if (lo < hi - 1)
+	{
+		p = partition(a, b, lo, hi);
+//		quicksort(a, b, lo, p, n);
+		quicksort(a, b, p, hi, n);
+	}
+	return (*a);
+}*/

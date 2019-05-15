@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 17:32:29 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:49:44 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,48 @@ int			main(int ac, char **av)
 {
 	t_var	var;
 	t_lst	*tmp;
+//	int		*n;
+//	int		nb;
 
 	var.a = NULL;
 	var.b = NULL;
 	var.a = init_node(0);
+/*	if(!(n = (int *)malloc(sizeof(int))))
+		return (0);
+	*n = 0;*/
 	if (ac > 1)
 	{
 		if (!(var.a = parse(ac, av, var.a)))
 			return (0);
-		var.a = quicksort(&var.a, &var.b, 0, *(var.a->n));
+		var.a = quicksort(&var.a, &var.b, 0, *(var.a->n)/*, &n*/);
+/*		printf("LOL\n");
+		if (*n)
+		{
+			nb = *n;
+			printf("---ROTATE1\n");
+			while (tmp--)
+			{
+				RA(&var.a);
+				PRINT(&var.a, 0);
+				printf("\n");
+			}
+			printf("---END--ROTATE1\n\n");
+		}
+		var.a = quicksort2(&var.a, &var.b, (*n), *(var.a->n), &n);
+		printf("\n");
+		if (*n)
+		{
+			printf("---ROTATE2\n");
+			while ((*n)--)
+			{
+				RRA(&var.a);
+				PRINT(&var.a, &var.b);
+				printf("\n");
+			}
+				printf("---END--ROTATE1\n\n");
+		}*/
 	}
+
 	PRINT(&var.a, 0);	
 // TEST
 /*	p(&var.a, &var.b);
