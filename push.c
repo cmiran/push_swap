@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 13:25:22 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/14 16:27:19 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 09:58:34 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	p(t_lst **lst1, t_lst **lst2)
 			(*lst2)->val = (*lst1)->val;
 			tmp = *lst1;
 			*lst1 = (*lst1)->next;
+//			printf("lst1 : %p, lst1->n : %p, (*lst->n) : %i\n", \
+//					*lst1, (*lst1)->n, (*(*lst1)->n));
 			if (*lst1)
 				--(*(*lst1)->n);
 			else
@@ -40,6 +42,8 @@ void	p(t_lst **lst1, t_lst **lst2)
 			*lst2 = start;
 			tmp = *lst1;
 			*lst1 = (*lst1)->next;
+//			printf("lst1 : %p, lst1->n : %p, (*lst->n) : %i\n", \
+//					*lst1, (*lst1)->n, (*(*lst1)->n));
 			if (*lst1)
 				--(*(*lst1)->n);
 			else

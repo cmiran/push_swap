@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/14 15:55:46 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 10:08:38 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	print(t_lst **alst)
 		*alst = (*alst)->next;
 	}
 	*alst = start;
-//	if ((*alst)->n)
-//		printf("len : %i\n", (*(*alst)->n));
+	if ((*alst)->n)
+		printf("len : %i\n", (*(*alst)->n));
 	return (1);
 }
 
