@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 10:08:38 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 11:14:33 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,14 @@ int	print(t_lst **alst)
 	start = *alst;
 	while (*alst)
 	{
-		printf("%li\n", (*alst)->val);
+		printf("%li", (*alst)->val);
 		*alst = (*alst)->next;
+		if (*alst)
+			printf("  ");
 	}
 	*alst = start;
-	if ((*alst)->n)
-		printf("len : %i\n", (*(*alst)->n));
+	if (*alst)
+		printf("\nlen : %i\n", (*(*alst)->n));
 	return (1);
 }
 
@@ -108,9 +110,9 @@ int			main(int ac, char **av)
 	{
 		if (!(var.a = parse(ac, av, var.a)))
 			return (0);
-		var.a = quicksort(var.a, var.b, 0, *(var.a->n));
+		var.a = quicksort(&var.a, &var.b, 0, *(var.a->n));
 	}
-	PRINT(var.a, var.b);	
+//	PRINT(&var.a, &var.b);	
 // TEST
 /*	p(&var.a, &var.b);
 	PRINT;

@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/14 15:39:54 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 11:12:43 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@
 # include <unistd.h>
 
 # include <stdio.h>
-# define PRINT(a, b)	printf("A\n"); print(&a);\
-	b ? printf("\nB\n") && print(&b) && printf("\n") : 0;
+# define PRINT(a, b)	printf("A\n"); print(a);\
+	b ? printf("\nB\n") && print(b) && printf("\n") : 0;
 
-# define SA(alst)	write(1, "sa\n", 3); s(&alst);
-# define SB(alst)	write(1, "sb\n", 3); s(&alst);
-# define SS(a, b)	write(1, "ss\n", 3); ss(&a, &b);
-# define PA(b, a)	write(1, "pa\n", 3); p(&b, &a);
-# define PB(a, b)	write(1, "pb\n", 3); p(&a, &b);
-# define RA(alst)	write(1, "ra\n", 3); r(&alst);
-# define RB(alst)	write(1, "rb\n", 3); r(&alst);
-# define RR(a, b)	write(1, "ss\n", 3); rr(&a, &b);
-# define RRA(alst)	write(1, "rra\n", 4); rv(&alst);
-# define RRB(alst)	write(1, "rrb\n", 4); rv(&alst);
-# define RRR(a, b)	write(1, "rrr\n", 4); rrr(&a, &b);
+# define SA(alst)	write(1, "sa\n\n", 3); s(alst);
+# define SB(alst)	write(1, "sb\n\n", 3); s(alst);
+# define SS(a, b)	write(1, "ss\n\n", 3); ss(a, b);
+# define PA(b, a)	write(1, "pa\n\n", 3); p(b, a);
+# define PB(a, b)	write(1, "pb\n\n", 3); p(a, b);
+# define RA(alst)	write(1, "ra\n\n", 3); r(alst);
+# define RB(alst)	write(1, "rb\n\n", 3); r(alst);
+# define RR(a, b)	write(1, "ss\n\n", 3); rr(a, b);
+# define RRA(alst)	write(1, "rra\n\n", 4); rv(alst);
+# define RRB(alst)	write(1, "rrb\n\n", 4); rv(alst);
+# define RRR(a, b)	write(1, "rrr\n\n", 4); rrr(a, b);
 
 typedef struct	s_node
 {
@@ -55,7 +55,7 @@ t_lst		*init_node(int *n);
 */
 int	print(t_lst **alst);
 
-t_lst		*quicksort(t_lst *a, t_lst *b, int lo, int hi);
+t_lst		*quicksort(t_lst **a, t_lst **b, int lo, int hi);
 /*
 **
 */

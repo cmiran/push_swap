@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 10:11:40 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/15 11:27:49 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ t_lst	*sort_alst(t_lst *alst, char c)
 	return (alst);
 }
 */
-int	partition(t_lst *a, t_lst *b, int lo, int hi)
+int	partition(t_lst **a, t_lst **b, int lo, int hi)
 {
 	intmax_t	pivot;
 	int	i;
 	int	j;
 	
 	printf("PARTITION---------------------------------\n");
-	printf("lo : %d, hi : %d\n", lo, hi);
+	printf("lo : %d, hi : %d\n\n", lo, hi);
 
-	pivot = a->val;
+	pivot = (*a)->val;
 	i = lo;
 	j = lo;
 	while (j++ < hi)
 	{
 		printf("j : %i\n", j);
-		if (a->val <= pivot)
+		if ((*a)->val <= pivot)
 		{
 			PB(a, b);
 			i++;
@@ -54,24 +54,24 @@ int	partition(t_lst *a, t_lst *b, int lo, int hi)
 		}
 		PRINT(a, b);
 	}
-	RRB(b);
+	RRR(a, b);
 	PRINT(a, b);
-	j = *(b->n);
-	printf("j : \n%i\n", j);
+	j = (*(*b)->n);
+	printf("\nj : \n%i\n", j);
 	while (j--)
 	{
 		PA(b, a);
 		PRINT(a, b);
 	}
-	printf("lo : %d, hi : %d\n", lo, hi);
+	printf("\nlo : %d, hi : %d\n", lo, hi);
 	printf("i : %i\nend\n\n", i);
 	return (i);
 }
 
-t_lst	*quicksort(t_lst *a, t_lst *b, int lo, int hi)
+t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi)
 {
 	int	p;
-//	int	i;;
+//	int	i;
 	
 	if (lo < hi)
 	{
@@ -82,5 +82,5 @@ t_lst	*quicksort(t_lst *a, t_lst *b, int lo, int hi)
 //			RA;
 		quicksort(a, b, p, hi);
 	}
-	return (a);
+	return (*a);
 }
