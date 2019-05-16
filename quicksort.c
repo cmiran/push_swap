@@ -6,37 +6,11 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 19:01:36 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 19:03:57 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void	dumbsort(t_lst **a, t_lst **b)
-{
-	int	i;
-
-	i = 0;
-	while (i < (*(*a)->n))	
-	{
-		if ((*a)->val > (*a)->next->val)
-			SA(a);
-		RA(a);
-		i++;
-	}
-	i = 0;
-	while (i < (*(*b)->n) - 1)	
-	{
-		if ((*b)->val > (*b)->next->val)
-			SB(b);
-		RB(b);
-		i++;
-	}
-	RB(b);
-}
-*/
-
 
 void	which_rotate(t_lst **a, t_lst **b, int k, int hi)
 {
