@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 18:49:44 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 09:17:03 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int			main(int ac, char **av)
 		}*/
 	}
 
-	PRINT(&var.a, 0);	
+//	PRINT(&var.a, 0);	
 // TEST
 /*	p(&var.a, &var.b);
 	PRINT;
