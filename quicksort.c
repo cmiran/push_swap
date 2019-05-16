@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 19:31:06 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 19:33:14 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	go_to_position(t_lst **a, int lo, int y)
 	}
 	else
 	{
-		while (lo > 0 && lo--)
+		while (lo--)
 		{
 			if (y)
 			{
