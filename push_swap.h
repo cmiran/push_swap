@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 19:28:14 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 20:12:06 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 typedef struct	s_node
 {
-	intmax_t	val;
+	long		val;
 	int		*n;
 	struct s_node	*next;
 }		t_lst;

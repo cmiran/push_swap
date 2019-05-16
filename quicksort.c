@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 19:49:50 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 20:11:37 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ void	go_to_position(t_lst **a, int lo, int y)
 
 int	partition(t_lst **a, t_lst **b, int lo, int hi)
 {
-	intmax_t	pivot;
-	int			i;
-	int			j;
+	long	pivot;
+	int		i;
+	int		j;
 	
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
