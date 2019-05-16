@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 19:33:14 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 19:49:50 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	swap_push(t_lst **a, t_lst **b, int n, int y)
 	{
 		SA(a);
 //		PRINT(a, 0);	
+//		printf("\n");
 	}
 	while (!y && n--)
 	{
@@ -133,7 +134,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 	which_rotate(a, b, (j - i - 1), hi);
 	swap_push(a, b, (*(*b)->n), 0);
 	go_to_position(a, lo, 0);	
-//	printf("i : %i\n---END\n\n", i);	
+//	printf("i : %i\n---END\n\n", i);
 	return (i);
 }
 
