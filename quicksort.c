@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 19:03:57 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 19:31:06 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,44 +66,41 @@ void	swap_push(t_lst **a, t_lst **b, int n, int y)
 
 void	go_to_position(t_lst **a, int lo, int y)
 {
-	if (lo)
+//	printf("---GO-TO\n");
+	if (lo > ((*(*a)->n) / 2))
 	{
-//		printf("---GO-TO\n");
-		if (lo > ((*(*a)->n) / 2))
+		lo =  (*(*a)->n) - lo;
+		while (lo--)
 		{
-			lo =  (*(*a)->n) - lo;
-			while (lo--)
+			if (y)
 			{
-				if (y)
-				{
-					RRA(a);
-				}
-				else
-				{
-					RA(a);
-				}
-//				PRINT(a, 0);	
-//				printf("\n");
+				RRA(a);
 			}
-		}
-		else
-		{
-			while (lo--)
+			else
 			{
-				if (y)
-				{
-					RA(a);
-				}
-				else
-				{
-					RRA(a);
-				}
-//				PRINT(a, 0);	
-//				printf("\n");
+				RA(a);
 			}
+//			PRINT(a, 0);	
+//			printf("\n");
 		}
-//		printf("---END--GO-TO\n");
 	}
+	else
+	{
+		while (lo > 0 && lo--)
+		{
+			if (y)
+			{
+				RA(a);
+			}
+			else
+			{
+				RRA(a);
+			}
+//			PRINT(a, 0);	
+//			printf("\n");
+		}
+	}
+//	printf("---END--GO-TO\n");
 }
 
 int	partition(t_lst **a, t_lst **b, int lo, int hi)
@@ -115,7 +112,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
 	go_to_position(a, lo, 1);
-	swap_push(a, b, (*(*b)->n), 1);
+	swap_push(a, b, 0, 1);
 	pivot = (*a)->val;
 	i = lo;
 	j = lo;
@@ -136,7 +133,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 	which_rotate(a, b, (j - i - 1), hi);
 	swap_push(a, b, (*(*b)->n), 0);
 	go_to_position(a, lo, 0);	
-//	printf("i : %i\n---END\n\n", i);*/	
+//	printf("i : %i\n---END\n\n", i);	
 	return (i);
 }
 
