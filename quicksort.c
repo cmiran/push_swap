@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 18:17:32 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/16 18:28:07 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,6 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		SA(a);
 //		PRINT(a, 0);	
 //		printf("\n");
-//		if ((hi - lo) == 1)
-//			return (lo);
 	}
 	pivot = (*a)->val;
 	i = lo;
