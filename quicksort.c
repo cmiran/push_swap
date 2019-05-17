@@ -6,11 +6,29 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/16 20:11:37 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/17 01:49:47 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	swap_me(t_lst **a, t_lst **b)
+{
+	if (a)
+	{
+		if ((*a)->val > (*a)->next->val)
+		{
+			SA(a);
+		}
+	}
+	else if (b)
+	{
+		if ((*b)->val < (*b)->next->val)
+		{
+			SB(b);
+		}
+	}
+}
 
 void	which_rotate(t_lst **a, t_lst **b, int k, int hi)
 {
@@ -47,18 +65,12 @@ void	which_rotate(t_lst **a, t_lst **b, int k, int hi)
 //	printf("END-PARTITION--ROTATE---\n");	
 }
 
-void	swap_push(t_lst **a, t_lst **b, int n, int y)
+void	push_back(t_lst **a, t_lst **b, int n)
 {
-//	printf("SWAP--PUSH---\n");
-	if (y && (*a)->val > (*a)->next->val)
-	{
-		SA(a);
-//		PRINT(a, 0);	
-//		printf("\n");
-	}
-	while (!y && n--)
+	while (n--)
 	{
 		PA(b, a);
+		n > 1 && n % 3 ? swap_me(0, b) : 0;
 //		PRINT(a, b);
 	}
 //	printf("\n");
@@ -70,7 +82,7 @@ void	go_to_position(t_lst **a, int lo, int y)
 //	printf("---GO-TO\n");
 	if (lo > ((*(*a)->n) / 2))
 	{
-		lo =  (*(*a)->n) - lo;
+		lo = (*(*a)->n) - lo;
 		while (lo--)
 		{
 			if (y)
@@ -79,6 +91,7 @@ void	go_to_position(t_lst **a, int lo, int y)
 			}
 			else
 			{
+//				lo % 7 ? swap_me(a, 0) : 0;
 				RA(a);
 			}
 //			PRINT(a, 0);	
@@ -91,6 +104,7 @@ void	go_to_position(t_lst **a, int lo, int y)
 		{
 			if (y)
 			{
+//				lo % 7 ? swap_me(a, 0) : 0;
 				RA(a);
 			}
 			else
@@ -109,11 +123,12 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 	long	pivot;
 	int		i;
 	int		j;
+	int		k;
 	
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
 	go_to_position(a, lo, 1);
-	swap_push(a, b, 0, 1);
+	swap_me(a, 0);
 	pivot = (*a)->val;
 	i = lo;
 	j = lo;
@@ -132,8 +147,8 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //		PRINT(a, b);
 	}
 	which_rotate(a, b, (j - i - 1), hi);
-	swap_push(a, b, (*(*b)->n), 0);
-	go_to_position(a, lo, 0);	
+	push_back(a, b, (*(*b)->n));
+	go_to_position(a, lo, 0);
 //	printf("i : %i\n---END\n\n", i);
 	return (i);
 }
