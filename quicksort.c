@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/18 14:32:27 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/18 15:02:36 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ int		swap_me(t_lst **a, t_lst **b)
 {
 	if (a)
 	{
-		if ((*a)->val > (*a)->next->val)
+		if ((*a)->val < (*a)->next->val)
 		{
 			SA(a);
 			return (1);
 		}
-	
 	}
 	else if (b)
 	{
@@ -99,7 +98,6 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
 	go_to_position(a, lo, 1);
-//	swap_me(a, 0);	
 	pivot = (*a)->val;
 	i = lo;
 	j = lo;
@@ -118,6 +116,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 	}
 	which_rotate(a, b, (hi - i));
 	push_back(a, b, (*(*b)->n));
+//	printf("i - lo : %d\n", (i - lo));
 	(i - lo) == 1 ? 0 : go_to_position(a, lo, 0);
 //	printf("i : %i\n---END\n\n", i);
 	return (i);
