@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/17 21:24:56 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/17 23:46:15 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,9 @@ void	which_rotate(t_lst **a, t_lst **b, int k, int hi)
 //	printf("-------END-WHICH--ROTATE---\n\n");	
 }
 
-void	go_to_position(t_lst **a, int lo,/* int k, int hi,*/ int y)
+void	go_to_position(t_lst **a, int lo, int y)
 {
-//	static int	n = 0;
-
 //	printf("---GO-TO\n");
-//	if (lo && k == 1)
-//		!n ? (n = lo && (lo = 0)) : (lo -= n && (n = 0));
-//	else if (!lo && k == 1)
-//		!n ? (n++) : (lo += n && (n = 0));
-//	k ? lo = 0 : 0;
 	if (lo > ((*(*a)->n) / 2))
 	{
 		lo = (*(*a)->n) - lo;
@@ -109,10 +102,7 @@ void	go_to_position(t_lst **a, int lo,/* int k, int hi,*/ int y)
 	else
 	{
 //		printf("n : %i, lo : %i\n", n, lo);
-//		n ? n += (lo - n) : (n = lo);
 //		printf("n : %i\n", n);
-//		lo ? lo -= n : 0;
-//		k && lo ? lo = hi - lo : 0;
 		while (lo > 0 && lo--)
 		{
 			if (y)
@@ -136,14 +126,10 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 	long	pivot;
 	int		i;
 	int		j;
-//	static int	k = 0;
 	
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
-	go_to_position(a, lo,/* k, hi,*/ 1);
-//	while (k)
-//		k--;
-//	k += lo;
+	go_to_position(a, lo, 1);
 	swap_me(a, 0);
 	pivot = (*a)->val;
 	i = lo;
@@ -155,7 +141,6 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		{
 			PB(a, b);
 			i++;
-//			k++;
 		}
 		else
 		{
@@ -166,7 +151,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 //	printf("k : %i, hi : %i\n", k, hi);
 	which_rotate(a, b, (j - i - 1), hi);
 	push_back(a, b, (*(*b)->n));
-	go_to_position(a, lo,/* k, hi,*/ 0);
+	go_to_position(a, lo, 0);
 //	printf("i : %i\n---END\n\n", i);
 	return (i);
 }
