@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/18 15:02:36 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/18 20:17:01 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,33 @@ int		swap_me(t_lst **a, t_lst **b)
 		}
 	}
 	return (0);
+}
+/*
+void	dumbsort(t_lst **a, t_lst **b, int lo, int hi)
+{
+	
+}
+*/
+void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
+{
+	int		i;
+	int		j;
+
+	i = lo;
+	while (i < hi)
+	{
+		j = i;
+		while (j > lo && (*a)->next->val < (*a)->val)
+		{
+			SA(a)
+			RRA(a);
+			j--;
+			i--;
+		}
+		RA(a);
+		i++;
+	}
+	RA(a);
 }
 
 void	push_back(t_lst **a, t_lst **b, int n)
@@ -126,6 +153,8 @@ t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi)
 {
 	int	p;
 	
+//	if ((hi - lo) < 5)
+//		insertionsort(a, b, lo, hi);
 	if (lo < hi - 1)
 	{
 		p = partition(a, b, lo, hi);

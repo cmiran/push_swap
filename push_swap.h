@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/17 17:02:14 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/18 20:16:58 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_lst		*quicksort(t_lst **a, t_lst **b, int lo, int hi);
 /*
 **
 */
+void		insertionsort(t_lst **a, t_lst **b, int lo, int hi);
 
 void	s(t_lst **start);
 void	ss(t_lst **a, t_lst **b);
