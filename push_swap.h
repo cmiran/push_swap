@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/18 20:16:58 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/19 21:07:14 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,19 @@ int		main(int ac, char **av);
 t_lst		*init_node(int *n);
 /*
 ** t_lst	*parse(int ac, char **av, t_lst *start)
-** intmax_t	ps_atoi(char *str, int *index)
+** long		ps_atoi(char *str, int *index)
 */
 int	print(t_lst **alst);
 
 t_lst		*quicksort(t_lst **a, t_lst **b, int lo, int hi);
 /*
-**
+** int		partition(t_lst **a, t_lst **b, int lo, int hi)
+** void		rotate_back(t_lst **a, t_lst **b, int n)
+** void		push_back(t_lst **a, t_lst **b, int n)
 */
+
 void		insertionsort(t_lst **a, t_lst **b, int lo, int hi);
+void		swap_me(t_lst **a, t_lst **b);
 
 void	s(t_lst **start);
 void	ss(t_lst **a, t_lst **b);

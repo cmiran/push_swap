@@ -6,13 +6,13 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/18 20:16:59 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/19 21:08:01 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lst		*init_node(int *n)
+t_lst	*init_node(int *n)
 {
 	t_lst *node;
 
@@ -31,10 +31,10 @@ t_lst		*init_node(int *n)
 	return (node);
 }
 
-intmax_t	ps_atoi(char *str, int *index)
+long	ps_atoi(char *str, int *index)
 {
-	intmax_t	nbr;
-	int			sign;
+	long	nbr;
+	int		sign;
 
 	nbr = 0;
 	sign = 1;
@@ -54,7 +54,7 @@ intmax_t	ps_atoi(char *str, int *index)
 	return (nbr * sign);
 }
 
-t_lst		*parse(int ac, char **av, t_lst *start)
+t_lst	*parse(int ac, char **av, t_lst *start)
 {
 	t_lst		*node;
 	int			i;
@@ -98,7 +98,7 @@ int	print(t_lst **alst)
 	return (1);
 }
 
-int			main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_var	var;
 	t_lst	*tmp;

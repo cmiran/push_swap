@@ -6,7 +6,7 @@
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 20:05:23 by cmiran            #+#    #+#              #
-#    Updated: 2019/05/15 19:36:47 by cmiran           ###   ########.fr        #
+#    Updated: 2019/05/19 00:03:53 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC= main.c\
 	 swap.c\
 	 push.c\
 	 rotate.c\
-	 quicksort.c
+	 quicksort.c\
+	 insertionsort.c
 
 LIB= libft/
 

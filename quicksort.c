@@ -6,90 +6,13 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/18 20:17:01 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/19 22:11:45 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		swap_me(t_lst **a, t_lst **b)
-{
-	if (a)
-	{
-		if ((*a)->val < (*a)->next->val)
-		{
-			SA(a);
-			return (1);
-		}
-	}
-	else if (b)
-	{
-		if ((*b)->val < (*b)->next->val)
-		{
-			SB(b);
-			return (1);
-		}
-	}
-	return (0);
-}
-/*
-void	dumbsort(t_lst **a, t_lst **b, int lo, int hi)
-{
-	
-}
-*/
-void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
-{
-	int		i;
-	int		j;
-
-	i = lo;
-	while (i < hi)
-	{
-		j = i;
-		while (j > lo && (*a)->next->val < (*a)->val)
-		{
-			SA(a)
-			RRA(a);
-			j--;
-			i--;
-		}
-		RA(a);
-		i++;
-	}
-	RA(a);
-}
-
-void	push_back(t_lst **a, t_lst **b, int n)
-{
-//	printf("PUSH-BACK--\n");
-	while (n--)
-	{
-		PA(b, a);
-//		n > 1 && n % 3 ? swap_me(0, b) : 0;
-//		PRINT(a, b);
-	}
-//	printf("\n");
-//	printf("END--PUSH-BACK--\n");
-}
-
-void	which_rotate(t_lst **a, t_lst **b, int n)
-{
-//	printf("------------WHICH--ROTATE---\n");	
-//	printf("n : %d\n", n);
-
-	while (n > 1 && n--)
-	{
-		RRA(a);
-//		PRINT(a, 0);
-//		printf("\n");
-	}
-	RRR(a, b);
-//	PRINT(a, 0);
-//	printf("-------END-WHICH--ROTATE---\n\n");	
-}
-
-void	go_to_position(t_lst **a, int lo, int y)
+/*void	go_to_index(t_lst **a, int lo, int y)
 {
 	static int	n = 0;
 	int			tmp;
@@ -114,18 +37,58 @@ void	go_to_position(t_lst **a, int lo, int y)
 //			printf("\n");
 	}
 //	printf("---END--GO-TO\n\n");
+}*/
+long	get_optimal_pivot(t_lst **a, long pivot)
+{
+/*	if (!pivot || (*a)->val > pivot)
+	{*/
+		swap_me(a, 0);
+		return ((*a)->val);
+/*	}
+	else if (pivot < 0)
+		return (pivot * 2);
+	else
+		return (pivot / 2);*/
+}
+void	push_back(t_lst **a, t_lst **b, int n)
+{
+//	printf("PUSH-BACK--\n");
+	while (n--)
+	{
+		PA(b, a);
+//		PRINT(a, b);
+	}
+//	printf("\n");
+//	printf("END--PUSH-BACK--\n");
+}
+
+void	rotate_back(t_lst **a, t_lst **b, int n, int j)
+{
+//	printf("------------WHICH--ROTATE---\n");	
+//	printf("n : %d\n", n);
+
+	while (n > 1 && n--)
+	{
+		RRA(a);
+//		PRINT(a, 0);
+//		printf("\n");
+	}
+	RRR(a, b);
+//	PRINT(a, 0);
+//	printf("-------END-WHICH--ROTATE---\n\n");	
 }
 
 int	partition(t_lst **a, t_lst **b, int lo, int hi)
 {
-	long	pivot;
+	static int	first = 1;
+	static long	pivot = 0;
 	int		i;
 	int		j;
 	
 //	printf("PARTITION---------------------------------\n");
 //	printf("lo : %d, hi : %d\n\n", lo, hi);
-	go_to_position(a, lo, 1);
-	pivot = (*a)->val;
+//	go_to_index(a, lo, 1);
+	pivot = get_optimal_pivot(a, pivot);
 	i = lo;
 	j = lo;
 	while (j++ < hi)
@@ -141,10 +104,10 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		}
 //		PRINT(a, b);
 	}
-	which_rotate(a, b, (hi - i));
+	first ? first-- : rotate_back(a, b, (hi - i), j);
 	push_back(a, b, (*(*b)->n));
 //	printf("i - lo : %d\n", (i - lo));
-	(i - lo) == 1 ? 0 : go_to_position(a, lo, 0);
+//	go_to_index(a, lo, 0);
 //	printf("i : %i\n---END\n\n", i);
 	return (i);
 }
@@ -152,14 +115,19 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 t_lst	*quicksort(t_lst **a, t_lst **b, int lo, int hi)
 {
 	int	p;
-	
-//	if ((hi - lo) < 5)
-//		insertionsort(a, b, lo, hi);
-	if (lo < hi - 1)
+
+	if (lo < hi)
 	{
-		p = partition(a, b, lo, hi);
-		quicksort(a, b, lo, p);
-		quicksort(a, b, p, hi);
+		if ((hi - lo) <= 5) 
+		{
+			insertionsort(a, b, lo, hi);
+		}
+		else
+		{
+			p = partition(a, b, lo, hi);
+			quicksort(a, b, lo, p);
+			quicksort(a, b, p, hi);
+		}
 	}
 	return (*a);
 }
