@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/20 03:46:11 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/20 14:10:20 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct	s_action
 	struct s_action	*next;
 }	t_stack;
 
-t_stack		*g_stack;
+t_stack		*g_stack->next);
 
 /*
 **	main.c
