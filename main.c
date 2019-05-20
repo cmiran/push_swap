@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/19 21:08:01 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/20 03:28:36 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,28 +100,28 @@ int	print(t_lst **alst)
 
 int		main(int ac, char **av)
 {
-	t_var	var;
+	t_lst	*a;
+	t_lst	*b;
 	t_lst	*tmp;
 
-	var.a = NULL;
-	var.b = NULL;
-	var.a = init_node(0);
+	a = NULL;
+	b = NULL;
+	g_stack = NULL;
+	a = init_node(0);
 	if (ac > 1)
 	{
-		if (!(var.a = parse(ac, av, var.a)))
+		if (!(a = parse(ac, av, a)))
 			return (0);
-		var.a = quicksort(&var.a, &var.b, 0, *(var.a->n));
-//		insertionsort(&var.a, &var.b, 0, *(var.a->n));
+		quicksort(&a, &b, 0, *(a->n));
 	}
-// 	PRINT(&var.a, 0);	
-	free(var.a->n);
-	while (var.a)
+	free(a->n);
+	while (a)
 	{
-		tmp = var.a->next;
-		var.a->val = 0;
-		var.a->next = NULL;
-		free(var.a);
-		var.a = tmp;
+		tmp = a->next;
+		a->val = 0;
+		a->next = NULL;
+		free(a);
+		a = tmp;
 	}
 	return (0);
 }

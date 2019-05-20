@@ -6,20 +6,21 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/19 21:05:43 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/20 03:32:45 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void		swap_me(t_lst **a, t_lst **b)
+int		swap_me(t_lst **a, t_lst **b)
 {
 	if (a)
 	{
 		if ((*a)->val > (*a)->next->val)
 		{
 			SA(a);
+			return (1);
 		}
 	}
 	else if (b)
@@ -27,12 +28,13 @@ void		swap_me(t_lst **a, t_lst **b)
 		if ((*b)->val < (*b)->next->val)
 		{
 			SB(b);
+			return (1);
 		}
 	}
+	return (0);
 }
 
-
-void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
+void	insertionsort(t_lst **a, int lo, int hi)
 {
 	int		i;
 
@@ -41,9 +43,8 @@ void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
 	hi == (*(*a)->n) ? i += 1 : 0;
 	while (i < hi)
 	{
-		while (i >= lo && (*a)->next->val < (*a)->val)
+		while (i >= lo && swap_me(a, 0))
 		{
-			SA(a);
 			RRA(a);
 			i--;
 		}

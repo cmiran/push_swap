@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/19 21:07:14 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/20 03:46:11 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,18 @@ typedef struct	s_node
 	struct s_node	*next;
 }		t_lst;
 
-typedef struct	s_variables
+typedef struct	s_action
 {
-	t_lst	*a;
-	t_lst	*b;
-	int		*n;
-	intmax_t	pivot;
-}		t_var;
+	char		*str;
+	struct s_action	*start;
+	struct s_action	*next;
+}	t_stack;
 
+t_stack		*g_stack;
+
+/*
+**	main.c
+*/
 int		main(int ac, char **av);
 t_lst		*init_node(int *n);
 /*
@@ -56,22 +60,39 @@ t_lst		*init_node(int *n);
 */
 int	print(t_lst **alst);
 
-t_lst		*quicksort(t_lst **a, t_lst **b, int lo, int hi);
+/*
+**	quicksort.c
+*/
+void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
 /*
 ** int		partition(t_lst **a, t_lst **b, int lo, int hi)
 ** void		rotate_back(t_lst **a, t_lst **b, int n)
 ** void		push_back(t_lst **a, t_lst **b, int n)
 */
 
-void		insertionsort(t_lst **a, t_lst **b, int lo, int hi);
-void		swap_me(t_lst **a, t_lst **b);
+/*
+**	tools.c
+*/
+void		insertionsort(t_lst **a, int lo, int hi);
+int		swap_me(t_lst **a, t_lst **b);
 
-void	s(t_lst **start);
-void	ss(t_lst **a, t_lst **b);
-void	p(t_lst **lst1, t_lst **lst2);
-void	r(t_lst **alst);
-void	rr(t_lst **a, t_lst **b);
-void	rv(t_lst **alst);
-void	rrr(t_lst **a, t_lst **b);
+/*
+**	swap.c
+*/
+void		s(t_lst **start);
+void		ss(t_lst **a, t_lst **b);
+
+/*
+**	push.c
+*/
+void		p(t_lst **lst1, t_lst **lst2);
+
+/*
+**	rotate.c
+*/
+void		r(t_lst **alst);
+void		rr(t_lst **a, t_lst **b);
+void		rv(t_lst **alst);
+void		rrr(t_lst **a, t_lst **b);
 
 #endif
