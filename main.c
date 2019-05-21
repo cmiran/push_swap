@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 08:20:01 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 13:59:14 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 }
 
 //	PRINT STACK
-int	print_stack(t_stack *g_stack)
+int	print_stk(t_stk *g_stack)
 {
-	t_stack	*start;
+	t_stk	*start;
 
 	start = g_stack;
 	while (g_stack)
@@ -118,7 +118,7 @@ int		main(int ac, char **av)
 	t_lst	*a;
 	t_lst	*b;
 	t_lst	*tmp1;
-	t_stack	*tmp2;
+	t_stk	*tmp2;
 
 	a = NULL;
 	b = NULL;
@@ -130,11 +130,7 @@ int		main(int ac, char **av)
 			return (0);
 		quicksort(&a, &b, 0, *(a->n));
 		g_stack = trim_sequence(&g_stack->start);
-		g_stack = trim_sequence(&g_stack->start);
-		g_stack = trim_sequence(&g_stack->start);
-		g_stack = trim_sequence(&g_stack->start);
-		g_stack = trim_sequence(&g_stack->start);
-		print_stack(g_stack);
+		print_stk(g_stack);
 	}
 	free(a->n);
 	while (a)

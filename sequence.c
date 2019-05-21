@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 03:28:14 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 08:17:32 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:26:15 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,27 @@ int	redudancy(char *str1, char *str2)
 			|| (ft_strequ("ra", str1) && ft_strequ("rra", str2)));
 }
 
-t_stack	*trim_sequence(t_stack **g_stack)
+t_stk	*trim_sequence(t_stk **g_stack)
 {
-	int	n;
-	t_stack	*tmp1;
-	t_stack *tmp2;
+	int		i;
+	int		n;
+	t_stk	*tmp1;
+	t_stk	*tmp2;
 
+	i = 0;
 	n = (*(*g_stack)->n);
-	while (n-- > 2)
+	while (i < n - 1)
 	{
 		tmp1 = (*g_stack)->next;
 		tmp2 = (*g_stack)->next->next;
 		if (redudancy(tmp1->str, tmp2->str))
 		{
-			(*(*g_stack)->n) -= 2;
-			if (n > 3)
+			if ((n - i) > 3)
 			{
 				(*g_stack)->next = tmp2->next;
-				*g_stack = (*g_stack)->next;
+				*g_stack = (*g_stack)->start;
 				n--;
+				i = 0;
 			}
 			else
 				(*g_stack)->next = 0;
@@ -47,18 +49,19 @@ t_stack	*trim_sequence(t_stack **g_stack)
 		}
 		else
 			*g_stack = (*g_stack)->next;
+		i++;
 	}
 	return ((*g_stack)->start);
 }
 
-t_stack	*init_action(t_stack **g_stack, char *str)
+t_stk	*init_action(t_stk **g_stack, char *str)
 {
-	t_stack	*start;
-	int	*len;
+	t_stk	*start;
+	int		*len;
 
 	if ((*g_stack))
 	{
-		if (!((*g_stack)->next = (t_stack *)malloc(sizeof(t_stack))))
+		if (!((*g_stack)->next = (t_stk *)malloc(sizeof(t_stk))))
 			return (0);
 		(*(*g_stack)->n)++;
 		start = (*g_stack)->start;
@@ -71,7 +74,7 @@ t_stack	*init_action(t_stack **g_stack, char *str)
 	}
 	else
 	{
-		if (!(*g_stack = (t_stack *)malloc(sizeof(t_stack))))
+		if (!(*g_stack = (t_stk *)malloc(sizeof(t_stk))))
 			return (0);
 		if (!((*g_stack)->n = (int *)malloc(sizeof(int))))
 			return (0);

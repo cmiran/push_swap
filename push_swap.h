@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/20 22:35:29 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:26:17 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define RRB(b)		init_action(&g_stack, "rrb"); rv(b);
 # define RRR(a, b)	init_action(&g_stack, "rrr"); rrr(a, b);
 
+
 typedef struct	s_node
 {
 	long		val;
@@ -40,15 +41,22 @@ typedef struct	s_node
 	struct s_node	*next;
 }		t_lst;
 
+/*typedef struct	s_median_of_3
+{
+	long	left;
+	long	middle;
+	long	right;
+}	t_med;*/
+
 typedef struct	s_action
 {
 	char		*str;
 	int		*n;
 	struct s_action	*start;
 	struct s_action	*next;
-}	t_stack;
+}	t_stk;
 
-t_stack		*g_stack;
+t_stk		*g_stack;
 
 /*
 **	main.c
@@ -80,8 +88,8 @@ void		sort_int_tab(long *tab, int size);
 /*
 **	sequence.c
 */
-t_stack		*init_action(t_stack **g_stack, char *str);
-t_stack		*trim_sequence(t_stack **g_stack);
+t_stk		*init_action(t_stk **g_stack, char *str);
+t_stk		*trim_sequence(t_stk **g_stack);
 
 /*
 **	swap.c
@@ -103,6 +111,6 @@ void		rv(t_lst **alst);
 void		rrr(t_lst **a, t_lst **b);
 
 int	print_lst(t_lst **alst);
-int	print_stack(t_stack *g_stack);
+int	print_stk(t_stk *g_stack);
 
 #endif

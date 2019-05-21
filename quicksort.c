@@ -6,14 +6,14 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 00:48:35 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:26:16 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-float	find_median(long *tab, int size)
+/*float	find_median(long *tab, int size)
 {
 	float m;
 
@@ -24,18 +24,27 @@ float	find_median(long *tab, int size)
 	else
 		m = tab[size / 2];
 	return (m);
-}
+}*/
 
-long	median_of_3(t_lst *a, int lo, int hi)
+/*long	median_of_3(t_lst **a, int lo, int hi)
 {
-	long	m;
+	int		i;
+	t_lst	*tmp;
+	long	*m;
 
-	while (lo++ < hi)
+	i = lo;
+	tmp = *a;
+	while (tmp)
 	{
-		
+		i == lo ? m[0] = tmp->val : 0;
+		i == hi / 2 ? m[1] = tmp->val : 0;
+		i == hi - 1 ? m[2] = tmp->val : 0;
+		tmp = tmp->next;
+		i++;
 	}
-	return (m);
-}
+	sort_int_tab(m, 3);
+	return (m[1]);
+}*/
 
 void	push_back(t_lst **a, t_lst **b, int n)
 {
@@ -66,12 +75,12 @@ void	rotate_back(t_lst **a, t_lst **b, int n)
 	}
 }
 
-int	partition(t_lst **a, t_lst **b, int lo, int hi)
+int		partition(t_lst **a, t_lst **b, int lo, int hi)
 {
 	static int	first = 1;
-	float		pivot;
-	int		i;
-	int		j;
+	long		pivot;
+	int			i;
+	int			j;
 	
 	swap_me(a, 0);
 	pivot = (*a)->val;
