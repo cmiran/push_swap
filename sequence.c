@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 03:28:14 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 00:18:59 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 08:17:32 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_stack	*trim_sequence(t_stack **g_stack)
 		tmp2 = (*g_stack)->next->next;
 		if (redudancy(tmp1->str, tmp2->str))
 		{
+			(*(*g_stack)->n) -= 2;
 			if (n > 3)
 			{
 				(*g_stack)->next = tmp2->next;

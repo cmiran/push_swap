@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 00:26:57 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 08:20:01 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,10 @@ int		main(int ac, char **av)
 		if (!(a = parse(ac, av, a)))
 			return (0);
 		quicksort(&a, &b, 0, *(a->n));
+		g_stack = trim_sequence(&g_stack->start);
+		g_stack = trim_sequence(&g_stack->start);
+		g_stack = trim_sequence(&g_stack->start);
+		g_stack = trim_sequence(&g_stack->start);
 		g_stack = trim_sequence(&g_stack->start);
 		print_stack(g_stack);
 	}
