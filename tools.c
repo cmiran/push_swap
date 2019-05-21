@@ -1,16 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertionsort.c                                    :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/20 13:28:42 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/20 22:34:39 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_int_tab(long *tab, int size)
+{
+	int	i;
+	int	j;
+	long	tmp;
+
+	i= 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j <= size)
+		{
+			if (tab[i] > tab[j])
+			{
+				tmp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 int		swap_me(t_lst **a, t_lst **b)
 {

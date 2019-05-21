@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/20 03:28:36 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 00:26:57 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,23 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 	return (start);
 }
 
-/*	PRINT*/
-int	print(t_lst **alst)
+//	PRINT STACK
+int	print_stack(t_stack *g_stack)
+{
+	t_stack	*start;
+
+	start = g_stack;
+	while (g_stack)
+	{
+		printf("%s\n", g_stack->str);
+		g_stack = g_stack->next;
+	}
+	g_stack = start;
+	return (1);
+}
+
+//	PRINT LIST
+int	print_lst(t_lst **alst)
 {
 	t_lst	*start;
 
@@ -102,7 +117,8 @@ int		main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
-	t_lst	*tmp;
+	t_lst	*tmp1;
+	t_stack	*tmp2;
 
 	a = NULL;
 	b = NULL;
@@ -113,15 +129,26 @@ int		main(int ac, char **av)
 		if (!(a = parse(ac, av, a)))
 			return (0);
 		quicksort(&a, &b, 0, *(a->n));
+		g_stack = trim_sequence(&g_stack->start);
+		print_stack(g_stack);
 	}
 	free(a->n);
 	while (a)
 	{
-		tmp = a->next;
+		tmp1 = a->next;
 		a->val = 0;
-		a->next = NULL;
+		a->next = 0;
 		free(a);
-		a = tmp;
+		a = tmp1;
+	}
+	free(g_stack->n);
+	while (g_stack)
+	{
+		tmp2 = g_stack->next;
+		g_stack->str = NULL;
+		g_stack->next = 0;
+		free(g_stack);
+		g_stack = tmp2;
 	}
 	return (0);
 }

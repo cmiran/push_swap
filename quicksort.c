@@ -6,19 +6,39 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/20 03:54:43 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 00:48:35 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
+float	find_median(long *tab, int size)
+{
+	float m;
+
+	m = 0.0;
+	sort_int_tab(tab, size);
+	if (size % 2 == 0)
+		m = (tab[(size - 1) / 2] + tab[size / 2]) / 2.0;
+	else
+		m = tab[size / 2];
+	return (m);
+}
+
+long	median_of_3(t_lst *a, int lo, int hi)
+{
+	long	m;
+
+	while (lo++ < hi)
+	{
+		
+	}
+	return (m);
+}
+
 void	push_back(t_lst **a, t_lst **b, int n)
 {
-/*	int	n;
-	
-i	n = (*(*b)->n);
-	if (n < 10)
-		insertionsort(b, lo, hi*/
 	while (n--)
 	{
 		PA(b, a);
@@ -27,21 +47,32 @@ i	n = (*(*b)->n);
 
 void	rotate_back(t_lst **a, t_lst **b, int n)
 {
-	while (n > 1 && n--)
+	if (n > (*(*a)->n) / 2)
 	{
-		RRA(a);
+		n = (*(*a)->n) - n;
+		while (n--)
+		{
+			RA(a);
+		}
+		RRB(b);
 	}
-	RRR(a, b);
+	else
+	{
+		while (n > 1 && n--)
+		{
+			RRA(a);
+		}
+		RRR(a, b);
+	}
 }
 
 int	partition(t_lst **a, t_lst **b, int lo, int hi)
 {
 	static int	first = 1;
-	long		pivot;
+	float		pivot;
 	int		i;
 	int		j;
 	
-//	go_to_index(a, lo, 1);
 	swap_me(a, 0);
 	pivot = (*a)->val;
 	i = lo;
@@ -59,9 +90,7 @@ int	partition(t_lst **a, t_lst **b, int lo, int hi)
 		}
 	}
 	first ? first-- : rotate_back(a, b, (hi - i));
-//	(*(*b)->n) < 8 ? insertionsort_b(b, 0, (*(*b)->n)) : 0;
 	push_back(a, b, (*(*b)->n));
-//	go_to_index(a, lo, 0);
 	return (i);
 }
 
@@ -72,9 +101,7 @@ void	quicksort(t_lst **a, t_lst **b, int lo, int hi)
 	if (lo < hi)
 	{
 		if ((hi - lo) <= 7) // <= Lucky number
-		{
 			insertionsort(a, lo, hi);
-		}
 		else
 		{
 			p = partition(a, b, lo, hi);
