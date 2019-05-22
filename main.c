@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 13:59:14 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/22 18:10:05 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,40 +79,6 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 	return (start);
 }
 
-//	PRINT STACK
-int	print_stk(t_stk *g_stack)
-{
-	t_stk	*start;
-
-	start = g_stack;
-	while (g_stack)
-	{
-		printf("%s\n", g_stack->str);
-		g_stack = g_stack->next;
-	}
-	g_stack = start;
-	return (1);
-}
-
-//	PRINT LIST
-int	print_lst(t_lst **alst)
-{
-	t_lst	*start;
-
-	start = *alst;
-	while (*alst)
-	{
-		printf("%li", (*alst)->val);
-		*alst = (*alst)->next;
-		if (*alst)
-			printf("  ");
-	}
-	*alst = start;
-	if (*alst)
-		printf("\nlen : %i\n", (*(*alst)->n));
-	return (1);
-}
-
 int		main(int ac, char **av)
 {
 	t_lst	*a;
@@ -128,9 +94,10 @@ int		main(int ac, char **av)
 	{
 		if (!(a = parse(ac, av, a)))
 			return (0);
-		quicksort(&a, &b, 0, *(a->n));
+		*(a->n) > 7 ? quicksort(&a, &b, 0, *(a->n)) :\
+			insertionsort(&a, &b, 1, *(a->n));
 		g_stack = trim_sequence(&g_stack->start);
-		print_stk(g_stack);
+		print_stk(g_stack->start);
 	}
 	free(a->n);
 	while (a)

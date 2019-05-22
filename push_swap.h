@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 15:26:17 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/22 14:40:19 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
 /*
 **	tools.c
 */
-void		insertionsort(t_lst **a, int lo, int hi);
-int		swap_me(t_lst **a, t_lst **b);
+void		insertionsort(t_lst **a, t_lst **b, int lo, int hi);
+int			swap_me(t_lst **a, t_lst **b);
 void		sort_int_tab(long *tab, int size);
 
 /*

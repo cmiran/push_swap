@@ -6,11 +6,45 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 18:19:50 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/22 18:10:04 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//	PRINT STACK
+int		print_stk(t_stk *g_stack)
+{
+	t_stk	*start;
+
+	start = g_stack;
+	while (g_stack)
+	{
+		printf("%s\n", g_stack->str);
+		g_stack = g_stack->next;
+	}
+	g_stack = start;
+	return (1);
+}
+
+//	PRINT LIST
+int		print_lst(t_lst **alst)
+{
+	t_lst	*start;
+
+	start = *alst;
+	while (*alst)
+	{
+		printf("%li", (*alst)->val);
+		*alst = (*alst)->next;
+		if (*alst)
+			printf("  ");
+	}
+	*alst = start;
+	if (*alst)
+		printf("\nlen : %i\n", (*(*alst)->n));
+	return (1);
+}
 
 void	sort_int_tab(long *tab, int size)
 {
@@ -57,13 +91,12 @@ int		swap_me(t_lst **a, t_lst **b)
 	return (0);
 }
 
-void	insertionsort(t_lst **a, int lo, int hi)
+void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
 {
 	int		i;
 
 	i = lo;
-//	lo == 0 ? lo++ : 0;
-	hi == (*(*a)->n) ? i += 1 : 0;
+	hi == (*(*a)->n) ? i++ : 0;
 	while (i < hi)
 	{
 		while (i >= lo && swap_me(a, 0))

@@ -6,44 +6,11 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 18:19:58 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/22 18:09:34 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-/*float	find_median(long *tab, int size)
-{
-	float m;
-
-	m = 0.0;
-	sort_int_tab(tab, size);
-	if (size % 2 == 0)
-		m = (tab[(size - 1) / 2] + tab[size / 2]) / 2.0;
-	else
-		m = tab[size / 2];
-	return (m);
-}*/
-
-/*long	median_of_3(t_lst **a, int lo, int hi)
-{
-	int	i;
-	t_lst	*tmp;
-	long	m[3];
-	
-	i = lo;
-	tmp = *a;
-	while (i++ < hi)
-	{
-		i == lo ? m[0] = tmp->val : 0;
-		i == (hi / 2) ? m[1] = tmp->val : 0;
-		i == hi - 1 ? m[2] = tmp->val : 0;
-		tmp = tmp->next;
-	}
-	sort_int_tab(m, 2);
-	return (m[1]);
-}*/
 
 void	push_back(t_lst **a, t_lst **b, int n)
 {
@@ -74,15 +41,36 @@ void	rotate_back(t_lst **a, t_lst **b, int n)
 	}
 }
 
+long	find_median(t_lst **a, int lo, int hi)
+{
+	int			i;
+	int			j;
+	t_lst		*tmp;
+	long		m[hi - lo];
+	
+	i = lo;
+	j = 0;
+	tmp = *a;
+	while (i++ < hi)
+	{
+		m[j++] = tmp->val;
+		tmp = tmp->next;
+	}
+	sort_int_tab(m, j - 1);
+	if ((hi - lo) % 2 != 0)
+		return (m[(j / 2) + 1]);
+	else
+		return (m[(j / 2)]);
+}
+
 int		partition(t_lst **a, t_lst **b, int lo, int hi)
 {
-	static int	first = 1;
+	static int	first_time = 1;
 	long		pivot;
 	int			i;
 	int			j;
 	
-	swap_me(a, 0);
-	pivot = (*a)->val;
+	pivot = find_median(a, lo, hi);
 	i = lo;
 	j = lo;
 	while (j++ < hi)
@@ -97,7 +85,7 @@ int		partition(t_lst **a, t_lst **b, int lo, int hi)
 			RA(a);
 		}
 	}
-	first ? first-- : rotate_back(a, b, (hi - i));
+	first_time ? first_time-- : rotate_back(a, b, (hi - i));
 	push_back(a, b, (*(*b)->n));
 	return (i);
 }
@@ -109,7 +97,7 @@ void	quicksort(t_lst **a, t_lst **b, int lo, int hi)
 	if (lo < hi)
 	{
 		if ((hi - lo) <= 7) // <= Lucky number
-			insertionsort(a, lo, hi);
+			insertionsort(a, b, lo, hi);
 		else
 		{
 			p = partition(a, b, lo, hi);
