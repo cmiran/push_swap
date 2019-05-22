@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/21 15:26:16 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:19:58 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,20 @@
 
 /*long	median_of_3(t_lst **a, int lo, int hi)
 {
-	int		i;
+	int	i;
 	t_lst	*tmp;
-	long	*m;
-
+	long	m[3];
+	
 	i = lo;
 	tmp = *a;
-	while (tmp)
+	while (i++ < hi)
 	{
 		i == lo ? m[0] = tmp->val : 0;
-		i == hi / 2 ? m[1] = tmp->val : 0;
+		i == (hi / 2) ? m[1] = tmp->val : 0;
 		i == hi - 1 ? m[2] = tmp->val : 0;
 		tmp = tmp->next;
-		i++;
 	}
-	sort_int_tab(m, 3);
+	sort_int_tab(m, 2);
 	return (m[1]);
 }*/
 
