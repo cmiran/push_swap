@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/22 14:40:19 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/24 18:08:18 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,27 @@
 # define RRB(b)		init_action(&g_stack, "rrb"); rv(b);
 # define RRR(a, b)	init_action(&g_stack, "rrr"); rrr(a, b);
 
-
 typedef struct	s_node
 {
-	long		val;
-	int		*n;
+	long			val;
+	int				*n;
 	struct s_node	*next;
-}		t_lst;
-
-/*typedef struct	s_median_of_3
-{
-	long	left;
-	long	middle;
-	long	right;
-}	t_med;*/
+}				t_lst;
 
 typedef struct	s_action
 {
-	char		*str;
-	int		*n;
+	char			*str;
+	int				*n;
 	struct s_action	*start;
 	struct s_action	*next;
-}	t_stk;
+}				t_stk;
 
 t_stk		*g_stack;
 
 /*
 **	main.c
 */
-int		main(int ac, char **av);
+int			main(int ac, char **av);
 t_lst		*init_node(int *n);
 /*
 ** t_lst	*parse(int ac, char **av, t_lst *start)
@@ -79,11 +71,21 @@ void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
 */
 
 /*
-**	tools.c
+** insertionssort.c
 */
 void		insertionsort(t_lst **a, t_lst **b, int lo, int hi);
-int			swap_me(t_lst **a, t_lst **b);
+/*
+** int		swap_me(t_lst **a, t_lst **b);
+*/
+
+/*
+**	tools.c
+*/
+void		check_str(char *str);
+void		check_lst(t_lst *a);
 void		sort_int_tab(long *tab, int size);
+void		print_stk(t_stk *g_stack);
+void		kill(char *str);
 
 /*
 **	sequence.c
@@ -110,7 +112,7 @@ void		rr(t_lst **a, t_lst **b);
 void		rv(t_lst **alst);
 void		rrr(t_lst **a, t_lst **b);
 
-int	print_lst(t_lst **alst);
-int	print_stk(t_stk *g_stack);
+int			print_lst(t_lst **alst);
+void		print_stk(t_stk *g_stack);
 
 #endif

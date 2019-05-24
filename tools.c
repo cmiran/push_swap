@@ -6,50 +6,31 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/22 18:10:04 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/24 18:18:17 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//	PRINT STACK
-int		print_stk(t_stk *g_stack)
+void	kill(char *str)
 {
-	t_stk	*start;
+	ft_putendl(str);
+	exit(EXIT_FAILURE);
+}
 
-	start = g_stack;
+void	print_stk(t_stk *g_stack)
+{
 	while (g_stack)
 	{
 		printf("%s\n", g_stack->str);
 		g_stack = g_stack->next;
 	}
-	g_stack = start;
-	return (1);
-}
-
-//	PRINT LIST
-int		print_lst(t_lst **alst)
-{
-	t_lst	*start;
-
-	start = *alst;
-	while (*alst)
-	{
-		printf("%li", (*alst)->val);
-		*alst = (*alst)->next;
-		if (*alst)
-			printf("  ");
-	}
-	*alst = start;
-	if (*alst)
-		printf("\nlen : %i\n", (*(*alst)->n));
-	return (1);
 }
 
 void	sort_int_tab(long *tab, int size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	tmp;
 
 	i= 0;
@@ -70,45 +51,39 @@ void	sort_int_tab(long *tab, int size)
 	}
 }
 
-int		swap_me(t_lst **a, t_lst **b)
-{
-	if (a)
-	{
-		if ((*a)->val > (*a)->next->val)
-		{
-			SA(a);
-			return (1);
-		}
-	}
-	else if (b)
-	{
-		if ((*b)->val < (*b)->next->val)
-		{
-			SB(b);
-			return (1);
-		}
-	}
-	return (0);
-}
-
-void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
+void	check_lst(t_lst *a)
 {
 	int		i;
+	int		j;
+	int		k;
+	int		tab[(*a->n)];
 
-	i = lo;
-	hi == (*(*a)->n) ? i++ : 0;
-	while (i < hi)
+	i = 0;
+	k = 0;
+	while (a->next)
 	{
-		while (i >= lo && swap_me(a, 0))
-		{
-			RRA(a);
-			i--;
-		}
-		RA(a);
-		i++;
+		a->val > a->next->val ? k++ : 0;
+	 	a->val < INT_MIN || a->val > INT_MAX ? kill("Error") : 0;
+		tab[i++] = a->val;
+		a = a->next;
 	}
-	if (hi == (*(*a)->n))
+	tab[i] = a->val;
+	i = -1;
+	while (i++ < (*a->n) - 1)
 	{
-		RA(a);
+		j = i + 1;
+		while (j <= (*a->n) - 1)
+			tab[i] == tab[j++] ? kill("Error") : 0;
+	}
+	k == 0 ? exit(EXIT_SUCCESS) : 0;
+}
+
+void	check_str(char *str)
+{
+	while (*str)
+	{
+		if (!ft_isdigit(*str) && !ft_isspace(*str) && !ft_issign(*str))
+			kill("Error");
+		str++;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 20:05:23 by cmiran            #+#    #+#              #
-#    Updated: 2019/05/20 16:42:32 by cmiran           ###   ########.fr        #
+#    Updated: 2019/05/24 15:19:43 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC= main.c\
 	 push.c\
 	 rotate.c\
 	 quicksort.c\
+	 insertionsort.c\
 	 sequence.c\
 	 tools.c
 

@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 18:35:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/22 18:10:05 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/24 18:18:22 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 	i = 0;
 	while (++i < ac)
 	{
+		check_str(av[i]);
 		j = 0;
 		while (av[i][j])
 		{
@@ -94,6 +95,7 @@ int		main(int ac, char **av)
 	{
 		if (!(a = parse(ac, av, a)))
 			return (0);
+		check_lst(a);
 		*(a->n) > 7 ? quicksort(&a, &b, 0, *(a->n)) :\
 			insertionsort(&a, &b, 1, *(a->n));
 		g_stack = trim_sequence(&g_stack->start);
