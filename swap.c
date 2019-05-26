@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 13:13:20 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/14 15:38:54 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/26 19:07:33 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	s(t_lst **start)
 {
 	intmax_t	tmp;
-	
+
 	tmp = (*start)->val;
 	(*start)->val = (*start)->next->val;
 	(*start)->next->val = tmp;

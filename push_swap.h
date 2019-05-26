@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/24 18:08:18 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/26 20:19:47 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <unistd.h>
 
 # include <stdio.h>
-# define PRINT(a, b)	printf("A\n"); print_lst(a);\
-	b ? printf("\nB\n") && print_lst(b) && printf("\n") : 0;
 
 # define SA(a)		init_action(&g_stack, "sa"); s(a);
 # define SB(b)		init_action(&g_stack, "sb"); s(b);
@@ -51,12 +49,28 @@ typedef struct	s_action
 t_stk		*g_stack;
 
 /*
-**	main.c
+**	push_swap.c
 */
 int			main(int ac, char **av);
+/*
+**	void	print_stk(t_stk *g_stack)
+*/
+
+/*
+**	checker.c
+*/
+int			main(int ac, char **av);
+/*
+**	int		instruction(t_lst **a, t_lst **b, char *line)
+*/
+
+/*
+**	parse.c
+*/
+t_lst		*parse(int ac, char **av, t_lst *start);
 t_lst		*init_node(int *n);
 /*
-** t_lst	*parse(int ac, char **av, t_lst *start)
+** void		check_str(char *str)
 ** long		ps_atoi(char *str, int *index)
 */
 
@@ -71,26 +85,27 @@ void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
 */
 
 /*
-** insertionssort.c
+**	insertionsort.c
 */
-void		insertionsort(t_lst **a, t_lst **b, int lo, int hi);
+void		insertionsort(t_lst **a, int lo, int hi);
 /*
-** int		swap_me(t_lst **a, t_lst **b);
+** int		swap_me(t_lst **a, t_lst **b)
 */
 
 /*
 **	tools.c
 */
-void		check_str(char *str);
+
+int			is_sorted(t_lst *a, t_lst *b);
 void		check_lst(t_lst *a);
 void		sort_int_tab(long *tab, int size);
-void		print_stk(t_stk *g_stack);
-void		kill(char *str);
+void		kill(char *str, int m);
+void		free_all(t_lst *a, t_lst *b);
 
 /*
 **	sequence.c
 */
-t_stk		*init_action(t_stk **g_stack, char *str);
+void		init_action(t_stk **g_stack, char *str);
 t_stk		*trim_sequence(t_stk **g_stack);
 
 /*
@@ -103,6 +118,9 @@ void		ss(t_lst **a, t_lst **b);
 **	push.c
 */
 void		p(t_lst **lst1, t_lst **lst2);
+/*
+**	void	p_bis(t_lst **lst1, t_lst **lst2)
+*/
 
 /*
 **	rotate.c

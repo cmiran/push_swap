@@ -6,13 +6,13 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 03:28:14 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/24 16:28:46 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/26 20:15:06 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	redudancy(char *str1, char *str2)
+int		redudancy(char *str1, char *str2)
 {
 	return ((ft_strequ("rrr", str1) && ft_strequ("ra", str2))
 			|| (ft_strequ("rra", str1) && ft_strequ("ra", str2))
@@ -54,7 +54,19 @@ t_stk	*trim_sequence(t_stk **g_stack)
 	return ((*g_stack)->start);
 }
 
-t_stk	*init_action(t_stk **g_stack, char *str)
+void	init_action_bis(t_stk **g_stack, char *str)
+{
+	if (!(*g_stack = (t_stk *)malloc(sizeof(t_stk))))
+		return ;
+	if (!((*g_stack)->n = (int *)malloc(sizeof(int))))
+		return ;
+	(*g_stack)->str = str;
+	(*(*g_stack)->n) = 1;
+	(*g_stack)->start = *g_stack;
+	(*g_stack)->next = 0;
+}
+
+void	init_action(t_stk **g_stack, char *str)
 {
 	t_stk	*start;
 	int		*len;
@@ -62,7 +74,7 @@ t_stk	*init_action(t_stk **g_stack, char *str)
 	if ((*g_stack))
 	{
 		if (!((*g_stack)->next = (t_stk *)malloc(sizeof(t_stk))))
-			return (0);
+			return ;
 		(*(*g_stack)->n)++;
 		start = (*g_stack)->start;
 		len = (*g_stack)->n;
@@ -73,15 +85,5 @@ t_stk	*init_action(t_stk **g_stack, char *str)
 		(*g_stack)->next = 0;
 	}
 	else
-	{
-		if (!(*g_stack = (t_stk *)malloc(sizeof(t_stk))))
-			return (0);
-		if (!((*g_stack)->n = (int *)malloc(sizeof(int))))
-			return (0);
-		(*g_stack)->str = str;
-		(*(*g_stack)->n) = 1;
-		(*g_stack)->start = *g_stack;
-		(*g_stack)->next = 0;
-	}
-	return (*g_stack);
+		init_action_bis(g_stack, str);
 }

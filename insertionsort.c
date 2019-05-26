@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 15:12:30 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/24 18:07:03 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/26 16:47:26 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		swap_me(t_lst **a, t_lst **b)
 	return (0);
 }
 
-void	insertionsort(t_lst **a, t_lst **b, int lo, int hi)
+void	insertionsort(t_lst **a, int lo, int hi)
 {
 	int		i;
 

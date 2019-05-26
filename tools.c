@@ -6,25 +6,44 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/24 18:18:17 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/26 20:02:57 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	kill(char *str)
+void	free_all(t_lst *a, t_lst *b)
 {
-	ft_putendl(str);
-	exit(EXIT_FAILURE);
-}
+	t_lst	*tmp1;
+	t_stk	*tmp2;
 
-void	print_stk(t_stk *g_stack)
-{
+	a ? free(a->n) : 0;
+	while (a)
+	{
+		tmp1 = a->next;
+		free(a);
+		a = tmp1;
+	}
+	b ? free(b->n) : 0;
+	while (b)
+	{
+		tmp1 = b->next;
+		free(a);
+		b = tmp1;
+	}
+	g_stack ? free(g_stack->n) : 0;
 	while (g_stack)
 	{
-		printf("%s\n", g_stack->str);
-		g_stack = g_stack->next;
+		tmp2 = g_stack->next;
+		free(g_stack);
+		g_stack = tmp2;
 	}
+}
+
+void	kill(char *str, int m)
+{
+	ft_putendl(str);
+	m ? exit(EXIT_FAILURE) : exit(EXIT_SUCCESS);
 }
 
 void	sort_int_tab(long *tab, int size)
@@ -33,7 +52,7 @@ void	sort_int_tab(long *tab, int size)
 	int		j;
 	long	tmp;
 
-	i= 0;
+	i = 0;
 	while (i < size)
 	{
 		j = i + 1;
@@ -62,8 +81,8 @@ void	check_lst(t_lst *a)
 	k = 0;
 	while (a->next)
 	{
-		a->val > a->next->val ? k++ : 0;
-	 	a->val < INT_MIN || a->val > INT_MAX ? kill("Error") : 0;
+		a->val < INT_MIN || a->val > INT_MAX ?\
+			kill("\033[1;31mError\033[0m", 1) : 0;
 		tab[i++] = a->val;
 		a = a->next;
 	}
@@ -73,17 +92,20 @@ void	check_lst(t_lst *a)
 	{
 		j = i + 1;
 		while (j <= (*a->n) - 1)
-			tab[i] == tab[j++] ? kill("Error") : 0;
+			tab[i] == tab[j++] ?\
+					kill("\033[1;31mError\033[0m", 1) : 0;
 	}
-	k == 0 ? exit(EXIT_SUCCESS) : 0;
 }
 
-void	check_str(char *str)
+int		is_sorted(t_lst *a, t_lst *b)
 {
-	while (*str)
+	if (b)
+		return (0);
+	while (a->next)
 	{
-		if (!ft_isdigit(*str) && !ft_isspace(*str) && !ft_issign(*str))
-			kill("Error");
-		str++;
+		if (a->val > a->next->val)
+			return (0);
+		a = a->next;
 	}
+	return (1);
 }

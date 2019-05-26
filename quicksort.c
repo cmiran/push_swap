@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/24 15:10:34 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/26 18:42:30 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ long	find_median(t_lst **a, int lo, int hi)
 	int			j;
 	t_lst		*tmp;
 	long		m[hi - lo];
-	
+
 	i = lo;
 	j = 0;
 	tmp = *a;
@@ -69,7 +69,7 @@ int		partition(t_lst **a, t_lst **b, int lo, int hi)
 	long		pivot;
 	int			i;
 	int			j;
-	
+
 	pivot = find_median(a, lo, hi);
 	i = lo;
 	j = lo;
@@ -96,8 +96,8 @@ void	quicksort(t_lst **a, t_lst **b, int lo, int hi)
 
 	if (lo < hi)
 	{
-		if ((hi - lo) <= 7) // <= Lucky number
-			insertionsort(a, b, lo, hi);
+		if ((hi - lo) <= 7)
+			insertionsort(a, lo, hi);
 		else
 		{
 			p = partition(a, b, lo, hi);
