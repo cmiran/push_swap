@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 00:03:46 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 15:53:22 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	kill(char *str, int m)
 	m ? exit(EXIT_FAILURE) : exit(EXIT_SUCCESS);
 }
 
-void	sort_int_tab(long *tab, int size)
+void	sort_int_tab(int *tab, int size)
 {
 	int		i;
 	int		j;
-	long	tmp;
+	int		tmp;
 
 	i = 0;
 	while (i < size)

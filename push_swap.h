@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 00:23:39 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 18:09:38 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_lst		*init_node(int *n);
 **	quicksort.c
 */
 void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
+int			find_median(t_lst **a, int lo, int hi);
 /*
 ** int		partition(t_lst **a, t_lst **b, int lo, int hi)
 ** void		rotate_back(t_lst **a, t_lst **b, int n)
@@ -84,6 +85,8 @@ void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
 **	insertionsort.c
 */
 void		insertionsort(t_lst **a, int lo, int hi);
+void		insertionsort2(t_lst **a, t_lst **b, int lo, int hi);
+void		lowsort(t_lst **a, t_lst **b, int lo, int hi);
 /*
 ** int		swap_me(t_lst **a, t_lst **b)
 */
@@ -100,7 +103,7 @@ t_stk		*trim_sequence(t_stk **g_stack);
 
 int			is_sorted(t_lst *a, t_lst *b);
 void		check_lst(t_lst *a);
-void		sort_int_tab(long *tab, int size);
+void		sort_int_tab(int *tab, int size);
 void		kill(char *str, int m);
 void		free_all(t_lst *a, t_lst *b, char *line);
 

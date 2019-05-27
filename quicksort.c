@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/26 18:42:30 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 16:31:44 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,22 @@ void	rotate_back(t_lst **a, t_lst **b, int n)
 		{
 			RA(a);
 		}
-		RRB(b);
 	}
 	else
 	{
-		while (n > 1 && n--)
+		while (n--)
 		{
 			RRA(a);
 		}
-		RRR(a, b);
 	}
 }
 
-long	find_median(t_lst **a, int lo, int hi)
+int		find_median(t_lst **a, int lo, int hi)
 {
 	int			i;
 	int			j;
 	t_lst		*tmp;
-	long		m[hi - lo];
+	int			m[hi - lo];
 
 	i = lo;
 	j = 0;
@@ -66,7 +64,7 @@ long	find_median(t_lst **a, int lo, int hi)
 int		partition(t_lst **a, t_lst **b, int lo, int hi)
 {
 	static int	first_time = 1;
-	long		pivot;
+	int			pivot;
 	int			i;
 	int			j;
 

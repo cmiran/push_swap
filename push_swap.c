@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 17:43:48 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 00:21:32 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 18:35:17 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int		main(int ac, char **av)
 		check_lst(a);
 		if (is_sorted(a, 0))
 			exit(EXIT_SUCCESS);
-		*(a->n) > 7 ? quicksort(&a, &b, 0, *(a->n)) :\
-			insertionsort(&a, 1, *(a->n));
-		g_stack = trim_sequence(&g_stack->start);
+//		*(a->n) > 7 ? quicksort(&a, &b, 0, *(a->n)) :\
+//			insertionsort(&a, 1, *(a->n));
+		lowsort(&a, &b, 0, *(a->n));
+//		g_stack = trim_sequence(&g_stack->start);
 		print_stk(g_stack->start);
 		free_all(a, b, 0);
 	}
