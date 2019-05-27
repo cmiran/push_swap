@@ -6,13 +6,13 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/26 20:02:57 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 00:03:46 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(t_lst *a, t_lst *b)
+void	free_all(t_lst *a, t_lst *b, char *line)
 {
 	t_lst	*tmp1;
 	t_stk	*tmp2;
@@ -38,6 +38,7 @@ void	free_all(t_lst *a, t_lst *b)
 		free(g_stack);
 		g_stack = tmp2;
 	}
+	line ? free(line) : 0;
 }
 
 void	kill(char *str, int m)

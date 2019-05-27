@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 17:43:48 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/26 17:56:33 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 00:21:32 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		main(int ac, char **av)
 			insertionsort(&a, 1, *(a->n));
 		g_stack = trim_sequence(&g_stack->start);
 		print_stk(g_stack->start);
-		free_all(a, b);
+		free_all(a, b, 0);
 	}
 	return (0);
 }

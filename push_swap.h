@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/26 20:19:47 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 00:23:39 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define PUSH_SWAP
 
 # include "libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-# include <stdio.h>
 
 # define SA(a)		init_action(&g_stack, "sa"); s(a);
 # define SB(b)		init_action(&g_stack, "sb"); s(b);
@@ -93,6 +89,12 @@ void		insertionsort(t_lst **a, int lo, int hi);
 */
 
 /*
+**	sequence.c
+*/
+void		init_action(t_stk **g_stack, char *str);
+t_stk		*trim_sequence(t_stk **g_stack);
+
+/*
 **	tools.c
 */
 
@@ -100,13 +102,7 @@ int			is_sorted(t_lst *a, t_lst *b);
 void		check_lst(t_lst *a);
 void		sort_int_tab(long *tab, int size);
 void		kill(char *str, int m);
-void		free_all(t_lst *a, t_lst *b);
-
-/*
-**	sequence.c
-*/
-void		init_action(t_stk **g_stack, char *str);
-t_stk		*trim_sequence(t_stk **g_stack);
+void		free_all(t_lst *a, t_lst *b, char *line);
 
 /*
 **	swap.c

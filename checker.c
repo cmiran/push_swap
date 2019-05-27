@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 18:04:35 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/26 18:37:11 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/27 00:04:38 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int		main(int ac, char **av)
 		{
 			if (!instruction(&a, &b, line))
 			{
-				free(line);
+				free_all(a, b, line);
 				kill("\033[1;31mError\033[0m", 1);
 			}
 			free(line);
 		}
 		is_sorted(a, b) ? kill("\033[1;32mOK\033[0m", 0) :\
 			kill("\033[1;31mKO\033[0m", 1);
-		free_all(a, b);
+		free_all(a, b, 0);
 	}
 	return (0);
 }
