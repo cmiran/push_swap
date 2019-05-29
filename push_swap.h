@@ -6,12 +6,12 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 18:09:38 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 14:35:43 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "libft/libft.h"
 
@@ -47,7 +47,8 @@ t_stk		*g_stack;
 /*
 **	push_swap.c
 */
-int			main(int ac, char **av);
+int				main(int ac, char **av);
+int				redudancy(char *str1, char *str2);
 /*
 **	void	print_stk(t_stk *g_stack)
 */
@@ -55,7 +56,7 @@ int			main(int ac, char **av);
 /*
 **	checker.c
 */
-int			main(int ac, char **av);
+int				main(int ac, char **av);
 /*
 **	int		instruction(t_lst **a, t_lst **b, char *line)
 */
@@ -63,8 +64,8 @@ int			main(int ac, char **av);
 /*
 **	parse.c
 */
-t_lst		*parse(int ac, char **av, t_lst *start);
-t_lst		*init_node(int *n);
+t_lst			*parse(int ac, char **av, t_lst *start);
+t_lst			*init_node(int *n);
 /*
 ** void		check_str(char *str)
 ** long		ps_atoi(char *str, int *index)
@@ -73,8 +74,8 @@ t_lst		*init_node(int *n);
 /*
 **	quicksort.c
 */
-void		quicksort(t_lst **a, t_lst **b, int lo, int hi);
-int			find_median(t_lst **a, int lo, int hi);
+void			quicksort(t_lst **a, t_lst **b, int lo, int hi);
+int				find_median(t_lst **a, int lo, int hi);
 /*
 ** int		partition(t_lst **a, t_lst **b, int lo, int hi)
 ** void		rotate_back(t_lst **a, t_lst **b, int n)
@@ -84,39 +85,44 @@ int			find_median(t_lst **a, int lo, int hi);
 /*
 **	insertionsort.c
 */
-void		insertionsort(t_lst **a, int lo, int hi);
-void		insertionsort2(t_lst **a, t_lst **b, int lo, int hi);
-void		lowsort(t_lst **a, t_lst **b, int lo, int hi);
+void			insertionsort(t_lst **a, int lo, int hi);
+void			lowsort(t_lst **a, t_lst **b, int lo, int hi);
 /*
+** void		small_partition(t_lst **a, t_lst **b, int lo, int hi)
 ** int		swap_me(t_lst **a, t_lst **b)
+** int		is_reverse_sorted(t_lst *b)
 */
 
 /*
 **	sequence.c
 */
-void		init_action(t_stk **g_stack, char *str);
-t_stk		*trim_sequence(t_stk **g_stack);
+void			init_action(t_stk **g_stack, char *str);
+t_stk			*trim_sequence(t_stk **g_stack);
+t_stk			*trim_sequence_small(t_stk **g_stack);
+/*
+** void		init_action_bis(t_stk **g_stack, char *str)
+*/
 
 /*
 **	tools.c
 */
 
-int			is_sorted(t_lst *a, t_lst *b);
-void		check_lst(t_lst *a);
-void		sort_int_tab(int *tab, int size);
-void		kill(char *str, int m);
-void		free_all(t_lst *a, t_lst *b, char *line);
+int				is_sorted(t_lst *a, t_lst *b);
+void			check_lst(t_lst *a);
+void			sort_int_tab(int *tab, int size);
+void			kill(char *str, int m);
+void			free_all(t_lst *a, t_lst *b, char *line);
 
 /*
 **	swap.c
 */
-void		s(t_lst **start);
-void		ss(t_lst **a, t_lst **b);
+void			s(t_lst **start);
+void			ss(t_lst **a, t_lst **b);
 
 /*
 **	push.c
 */
-void		p(t_lst **lst1, t_lst **lst2);
+void			p(t_lst **lst1, t_lst **lst2);
 /*
 **	void	p_bis(t_lst **lst1, t_lst **lst2)
 */
@@ -124,12 +130,12 @@ void		p(t_lst **lst1, t_lst **lst2);
 /*
 **	rotate.c
 */
-void		r(t_lst **alst);
-void		rr(t_lst **a, t_lst **b);
-void		rv(t_lst **alst);
-void		rrr(t_lst **a, t_lst **b);
+void			r(t_lst **alst);
+void			rr(t_lst **a, t_lst **b);
+void			rv(t_lst **alst);
+void			rrr(t_lst **a, t_lst **b);
 
-int			print_lst(t_lst **alst);
-void		print_stk(t_stk *g_stack);
+int				print_lst(t_lst **alst);
+void			print_stk(t_stk *g_stack);
 
 #endif

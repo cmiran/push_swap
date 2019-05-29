@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 15:12:30 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 18:35:19 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 14:34:57 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,26 @@ int		is_reverse_sorted(t_lst *b)
 
 int		swap_me(t_lst **a, t_lst **b)
 {
-	if (*a)
+	if (a)
 	{
 		if ((*a)->val > (*a)->next->val)
 		{
-			SA(a);
+			SA(a)
 			return (1);
 		}
 	}
-	else if (*b)
+	else if (b)
 	{
 		if ((*b)->val < (*b)->next->val)
 		{
-			SB(b);
+			SB(b)
 			return (1);
 		}
 	}
 	return (0);
 }
 
-void	partition_2(t_lst **a, t_lst **b, int lo, int hi)
+void	small_partition(t_lst **a, t_lst **b, int lo, int hi)
 {
 	int		pivot;
 	int		i;
@@ -55,11 +55,11 @@ void	partition_2(t_lst **a, t_lst **b, int lo, int hi)
 	{
 		if ((*a)->val < pivot)
 		{
-			PB(a, b);
+			PB(a, b)
 		}
 		else
 		{
-			RA(a);
+			RA(a)
 		}
 		i++;
 	}
@@ -67,49 +67,28 @@ void	partition_2(t_lst **a, t_lst **b, int lo, int hi)
 
 void	lowsort(t_lst **a, t_lst **b, int lo, int hi)
 {
-	partition_2(a, b, lo, hi);
+	(*(*a)->n) > 3 ? small_partition(a, b, lo, hi) : 0;
 	while (!is_sorted(*a, 0))
 	{
-//		swap_me(a, 0);
-		RRA(a);
+		if (!swap_me(a, 0))
+		{
+			RRA(a)
+		}
 	}
+	if (!*b)
+		return ;
 	while (!is_reverse_sorted(*b))
 	{
-//		swap_me(0, b);
-		RRB(b);
+		if (!swap_me(0, b))
+		{
+			RRB(b)
+		}
 	}
 	while (*b)
 	{
-		PA(b, a);
+		PA(b, a)
 	}
 }
-
-/*void	insertionsort2(t_lst **a, t_lst **b, int lo, int hi)
-{
-	int		i;
-
-	i = lo;
-	hi > 7 && hi == (*(*a)->n) ? i++ : 0;
-	while (i < hi)
-	{
-		if (swap_me(a, 0) && i > lo)
-		{
-			PB(a, b);
-			while ((*b)->val < (*a)->val && i >= lo)
-			{
-				RRA(a);
-				i--;
-			}
-			PA(b, a);
-		}
-		RA(a);
-		i++;
-	}
-	if (hi == (*(*a)->n))
-	{
-		RA(a);
-	}
-}*/
 
 void	insertionsort(t_lst **a, int lo, int hi)
 {
@@ -121,14 +100,14 @@ void	insertionsort(t_lst **a, int lo, int hi)
 	{
 		while (i >= lo && swap_me(a, 0))
 		{
-			RRA(a);
+			RRA(a)
 			i--;
 		}
-		RA(a);
+		RA(a)
 		i++;
 	}
 	if (hi == (*(*a)->n))
 	{
-		RA(a);
+		RA(a)
 	}
 }

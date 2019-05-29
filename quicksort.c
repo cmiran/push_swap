@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 18:05:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 16:31:44 by cmiran           ###   ########.fr       */
+/*   Created: 2019/05/29 14:22:16 by cmiran            #+#    #+#             */
+/*   Updated: 2019/05/29 14:41:47 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ void	push_back(t_lst **a, t_lst **b, int n)
 {
 	while (n--)
 	{
-		PA(b, a);
+		PA(b, a)
 	}
 }
 
-void	rotate_back(t_lst **a, t_lst **b, int n)
+void	rotate_back(t_lst **a, int n)
 {
 	if (n > (*(*a)->n) / 2)
 	{
 		n = (*(*a)->n) - n;
 		while (n--)
 		{
-			RA(a);
+			RA(a)
 		}
 	}
 	else
 	{
 		while (n--)
 		{
-			RRA(a);
+			RRA(a)
 		}
 	}
 }
@@ -73,17 +73,17 @@ int		partition(t_lst **a, t_lst **b, int lo, int hi)
 	j = lo;
 	while (j++ < hi)
 	{
-		if ((*a)->val <= pivot)
+		if ((*a)->val < pivot)
 		{
-			PB(a, b);
+			PB(a, b)
 			i++;
 		}
 		else
 		{
-			RA(a);
+			RA(a)
 		}
 	}
-	first_time ? first_time-- : rotate_back(a, b, (hi - i));
+	first_time ? first_time-- : rotate_back(a, (hi - i));
 	push_back(a, b, (*(*b)->n));
 	return (i);
 }
@@ -95,7 +95,8 @@ void	quicksort(t_lst **a, t_lst **b, int lo, int hi)
 	if (lo < hi)
 	{
 		if ((hi - lo) <= 7)
-			insertionsort(a, lo, hi);
+			(*(*a)->n) > 7 ? insertionsort(a, lo, hi) :\
+				insertionsort(a, 1, hi);
 		else
 		{
 			p = partition(a, b, lo, hi);

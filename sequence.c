@@ -6,50 +6,74 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 03:28:14 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 00:21:17 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 14:08:37 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		redudancy(char *str1, char *str2)
+t_stk	*trim_sequence_small(t_stk **g_stack)
 {
-	return ((ft_strequ("rrr", str1) && ft_strequ("ra", str2))
-			|| (ft_strequ("rra", str1) && ft_strequ("ra", str2))
-			|| (ft_strequ("ra", str1) && ft_strequ("rra", str2)));
+	int		i;
+	t_stk	*tmp;
+
+	i = 0;
+	while (++i < (*(*g_stack)->n) - 1)
+	{
+		tmp = (*g_stack)->next;
+		if (redudancy((*g_stack)->str, tmp->str))
+		{
+			(*g_stack)->str = "ss";
+			(*g_stack)->next = tmp->next;
+			*g_stack = (*g_stack)->start;
+			(*(*g_stack)->n)--;
+			free(tmp);
+		}
+		else
+			*g_stack = (*g_stack)->next;
+	}
+	return ((*g_stack)->start);
+}
+
+void	trim_sequence_bis(t_stk **g_stack, t_stk **tmp, int y)
+{
+	if (y)
+	{
+		*tmp = (*g_stack)->next;
+		(*tmp)->next = (*g_stack)->next->next;
+	}
+	else
+	{
+		free((*tmp)->next);
+		free(*tmp);
+	}
 }
 
 t_stk	*trim_sequence(t_stk **g_stack)
 {
 	int		i;
-	int		n;
-	t_stk	*tmp1;
-	t_stk	*tmp2;
+	t_stk	*tmp;
 
-	i = 0;
-	n = (*(*g_stack)->n);
-	while (i < n - 1)
+	i = -1;
+	while (++i < (*(*g_stack)->n) - 1)
 	{
-		tmp1 = (*g_stack)->next;
-		tmp2 = (*g_stack)->next->next;
-		if (redudancy(tmp1->str, tmp2->str))
+		trim_sequence_bis(g_stack, &tmp, 1);
+		if (redudancy(tmp->str, tmp->next->str))
 		{
-			if ((n - i) > 3)
+			if (((*(*g_stack)->n) - i) > 3)
 			{
-				(*g_stack)->next = tmp2->next;
+				(*g_stack)->next = tmp->next->next;
 				*g_stack = (*g_stack)->start;
-				n--;
+				(*(*g_stack)->n)--;
 				i = 0;
 			}
 			else
 				(*g_stack)->next = 0;
-			n--;
-			free(tmp1);
-			free(tmp2);
+			(*(*g_stack)->n)--;
+			trim_sequence_bis(g_stack, &tmp, 0);
 		}
 		else
 			*g_stack = (*g_stack)->next;
-		i++;
 	}
 	return ((*g_stack)->start);
 }

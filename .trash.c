@@ -41,3 +41,21 @@ int		print_lst(t_lst **alst)
 		printf("\nlen : %i\n", (*(*alst)->n));
 	return (1);
 }
+
+void	insertionsort_b(t_lst **b, int lo, int hi)
+{
+	int		i;
+
+	i = lo;
+	while (i < hi)
+	{
+		while (i >= lo && swap_me(0, b))
+		{
+			RRB(b);
+			i--;
+		}
+		RB(b);
+		i++;
+	}
+	RB(b);
+}
