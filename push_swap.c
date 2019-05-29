@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 17:43:48 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 14:16:20 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:18:32 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		main(int ac, char **av)
 		b = NULL;
 		if (!(a = parse(ac, av, a)))
 			return (0);
-		check_lst(a);
+		check_lst(a, *(a->n));
 		if (is_sorted(a, 0))
 			exit(EXIT_SUCCESS);
 		*(a->n) > 5 ? quicksort(&a, &b, 0, *(a->n)) :\

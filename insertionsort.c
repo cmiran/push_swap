@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 15:12:30 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 14:34:57 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:03:16 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		swap_me(t_lst **a, t_lst **b)
 	{
 		if ((*a)->val > (*a)->next->val)
 		{
-			SA(a)
+			SA(a);
 			return (1);
 		}
 	}
@@ -37,7 +37,7 @@ int		swap_me(t_lst **a, t_lst **b)
 	{
 		if ((*b)->val < (*b)->next->val)
 		{
-			SB(b)
+			SB(b);
 			return (1);
 		}
 	}
@@ -55,11 +55,11 @@ void	small_partition(t_lst **a, t_lst **b, int lo, int hi)
 	{
 		if ((*a)->val < pivot)
 		{
-			PB(a, b)
+			PB(a, b);
 		}
 		else
 		{
-			RA(a)
+			RA(a);
 		}
 		i++;
 	}
@@ -72,7 +72,7 @@ void	lowsort(t_lst **a, t_lst **b, int lo, int hi)
 	{
 		if (!swap_me(a, 0))
 		{
-			RRA(a)
+			RRA(a);
 		}
 	}
 	if (!*b)
@@ -81,12 +81,12 @@ void	lowsort(t_lst **a, t_lst **b, int lo, int hi)
 	{
 		if (!swap_me(0, b))
 		{
-			RRB(b)
+			RRB(b);
 		}
 	}
 	while (*b)
 	{
-		PA(b, a)
+		PA(b, a);
 	}
 }
 
@@ -100,14 +100,14 @@ void	insertionsort(t_lst **a, int lo, int hi)
 	{
 		while (i >= lo && swap_me(a, 0))
 		{
-			RRA(a)
+			RRA(a);
 			i--;
 		}
-		RA(a)
+		RA(a);
 		i++;
 	}
 	if (hi == (*(*a)->n))
 	{
-		RA(a)
+		RA(a);
 	}
 }

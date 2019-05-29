@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 14:05:26 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 16:27:51 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,30 +71,32 @@ void	sort_int_tab(int *tab, int size)
 	}
 }
 
-void	check_lst(t_lst *a)
+void	check_lst(t_lst *a, int n)
 {
 	int		i;
 	int		j;
-	int		k;
-	int		tab[(*a->n)];
+	int		tab[n];
 
 	i = 0;
-	k = 0;
-	while (a->next)
+	while (a)
 	{
 		a->val < INT_MIN || a->val > INT_MAX ?\
 			kill("\033[1;31mError\033[0m", 1) : 0;
-		tab[i++] = a->val;
+		tab[i] = a->val;
 		a = a->next;
+		i++;
 	}
-	tab[i] = a->val;
-	i = -1;
-	while (i++ < (*a->n) - 1)
+	i = 0;
+	while (i < n - 1)
 	{
 		j = i + 1;
-		while (j <= (*a->n) - 1)
-			tab[i] == tab[j++] ?\
+		while (j < n)
+		{
+			tab[i] == tab[j] ?\
 					kill("\033[1;31mError\033[0m", 1) : 0;
+			j++;
+		}
+		i++;
 	}
 }
 

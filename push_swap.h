@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 14:35:43 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:20:00 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_stk			*trim_sequence_small(t_stk **g_stack);
 */
 
 int				is_sorted(t_lst *a, t_lst *b);
-void			check_lst(t_lst *a);
+void			check_lst(t_lst *a, int n);
 void			sort_int_tab(int *tab, int size);
 void			kill(char *str, int m);
 void			free_all(t_lst *a, t_lst *b, char *line);

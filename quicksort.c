@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 14:22:16 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 14:41:47 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:02:58 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push_back(t_lst **a, t_lst **b, int n)
 {
 	while (n--)
 	{
-		PA(b, a)
+		PA(b, a);
 	}
 }
 
@@ -27,14 +27,14 @@ void	rotate_back(t_lst **a, int n)
 		n = (*(*a)->n) - n;
 		while (n--)
 		{
-			RA(a)
+			RA(a);
 		}
 	}
 	else
 	{
 		while (n--)
 		{
-			RRA(a)
+			RRA(a);
 		}
 	}
 }
@@ -75,12 +75,12 @@ int		partition(t_lst **a, t_lst **b, int lo, int hi)
 	{
 		if ((*a)->val < pivot)
 		{
-			PB(a, b)
+			PB(a, b);
 			i++;
 		}
 		else
 		{
-			RA(a)
+			RA(a);
 		}
 	}
 	first_time ? first_time-- : rotate_back(a, (hi - i));

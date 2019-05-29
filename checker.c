@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 18:04:35 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/27 00:04:38 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/05/29 16:25:59 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		main(int ac, char **av)
 		b = NULL;
 		if (!(a = parse(ac, av, a)))
 			return (0);
-		check_lst(a);
+		check_lst(a, *(a->n));
 		while (get_next_line(0, &line) > 0)
 		{
 			if (!instruction(&a, &b, line))
