@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:50 by cmiran            #+#    #+#             */
-/*   Updated: 2019/06/05 22:23:19 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 22:44:16 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ t_lst	*init_node(int *n)
 	else
 		node->n = n;
 	return (node);
+}
+
+int		check_index(char *str, int *index)
+{
+	if (!ft_isspace(str[*index]))
+			return (0);
+	while (str[*index] && ft_isspace(str[*index]))
+		(*index)++;
+	return (1);
 }
 
 long	ps_atoi(char *str, int *index)
@@ -81,8 +90,8 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 		while (av[i][j])
 		{
 			node->val = ps_atoi(av[i], &j);
-			while (av[i][j] && ft_isspace(av[i][j]))
-				j++;
+			check_index(av[i], &j) ? 0 :\
+				kill("\033[1;31mError\033[0m", 1, start, 0);
 			if (av[i][j] || i + 1 < ac)
 			{
 				node->next = init_node(start->n);
