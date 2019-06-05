@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:50 by cmiran            #+#    #+#             */
-/*   Updated: 2019/06/05 22:44:16 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/06 00:12:21 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_lst	*init_node(int *n)
 
 int		check_index(char *str, int *index)
 {
-	if (!ft_isspace(str[*index]))
+	if (str[*index] && !ft_isspace(str[*index]))
 			return (0);
 	while (str[*index] && ft_isspace(str[*index]))
 		(*index)++;
