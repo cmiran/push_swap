@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 23:57:06 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 16:27:51 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 17:01:07 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void	free_all(t_lst *a, t_lst *b, char *line)
 	line ? free(line) : 0;
 }
 
-void	kill(char *str, int m)
+void	kill(char *str, int m, t_lst *a, t_lst *b)
 {
+	a || b ? free_all(a, b, 0) : 0;
 	ft_putendl(str);
 	m ? exit(EXIT_FAILURE) : exit(EXIT_SUCCESS);
 }
@@ -81,7 +82,7 @@ void	check_lst(t_lst *a, int n)
 	while (a)
 	{
 		a->val < INT_MIN || a->val > INT_MAX ?\
-			kill("\033[1;31mError\033[0m", 1) : 0;
+			kill("\033[1;31mError\033[0m", 1, a, 0) : 0;
 		tab[i] = a->val;
 		a = a->next;
 		i++;
@@ -93,7 +94,7 @@ void	check_lst(t_lst *a, int n)
 		while (j < n)
 		{
 			tab[i] == tab[j] ?\
-					kill("\033[1;31mError\033[0m", 1) : 0;
+					kill("\033[1;31mError\033[0m", 1, a, 0) : 0;
 			j++;
 		}
 		i++;

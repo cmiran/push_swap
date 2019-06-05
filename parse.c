@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:50 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 16:31:48 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 21:14:12 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ long	ps_atoi(char *str, int *index)
 		(*index)++;
 	if (str[*index] == '+' || str[*index] == '-')
 	{
-		if (*str == '-')
+		if (str[*index] == '-')
 			sign *= -1;
 		(*index)++;
 	}
@@ -54,14 +54,15 @@ long	ps_atoi(char *str, int *index)
 	return (nbr * sign);
 }
 
-void	check_str(char *str)
+int		check_str(char *str)
 {
 	while (*str)
 	{
 		if (!ft_isdigit(*str) && !ft_isspace(*str) && !ft_issign(*str))
-			kill("\033[1;31mError\033[0m", 1);
+			return (0);
 		str++;
 	}
+	return (1);
 }
 
 t_lst	*parse(int ac, char **av, t_lst *start)
@@ -74,13 +75,14 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 	i = 0;
 	while (++i < ac)
 	{
-		check_str(av[i]);
+		check_str(av[i]) ? 0 :\
+			kill("\033[1;31mError\033[0m", 1, start, 0);
 		j = 0;
 		while (av[i][j])
 		{
 			node->val = ps_atoi(av[i], &j);
-			while (av[i][j] && ft_isspace(av[i][j]))
-				j++;
+//			while (av[i][j] && ft_isspace(av[i][j]))
+//				j++;
 			if (av[i][j] || i + 1 < ac)
 			{
 				node->next = init_node(start->n);

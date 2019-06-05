@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 17:43:48 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 17:18:32 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 21:13:06 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_stk(t_stk *g_stack)
 {
 	while (g_stack)
 	{
-		printf("%s\n", g_stack->str);
+		ft_putendl(g_stack->str);
 		g_stack = g_stack->next;
 	}
 }
@@ -42,7 +42,10 @@ int		main(int ac, char **av)
 			return (0);
 		check_lst(a, *(a->n));
 		if (is_sorted(a, 0))
+		{
+			free_all(a, 0, 0);
 			exit(EXIT_SUCCESS);
+		}
 		*(a->n) > 5 ? quicksort(&a, &b, 0, *(a->n)) :\
 			lowsort(&a, &b, 0, *(a->n));
 		*(a->n) > 5 ? g_stack = trim_sequence(&g_stack->start) :\

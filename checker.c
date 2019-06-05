@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 18:04:35 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/29 16:25:59 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 19:14:41 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,19 @@ int		main(int ac, char **av)
 		a = init_node(0);
 		b = NULL;
 		if (!(a = parse(ac, av, a)))
-			return (0);
+			kill("\033[1;31mError\033[0m", 1, a, 0);
 		check_lst(a, *(a->n));
 		while (get_next_line(0, &line) > 0)
 		{
 			if (!instruction(&a, &b, line))
 			{
 				free_all(a, b, line);
-				kill("\033[1;31mError\033[0m", 1);
+				kill("\033[1;31mError\033[0m", 1, 0, 0);
 			}
 			free(line);
 		}
-		is_sorted(a, b) ? kill("\033[1;32mOK\033[0m", 0) :\
-			kill("\033[1;31mKO\033[0m", 1);
-		free_all(a, b, 0);
+		is_sorted(a, b) ? kill("\033[1;32mOK\033[0m", 0, a, b) :\
+			kill("\033[1;31mKO\033[0m", 1, a, b);
 	}
 	return (0);
 }

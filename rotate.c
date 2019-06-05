@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 14:16:41 by cmiran            #+#    #+#             */
-/*   Updated: 2019/05/15 19:28:40 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 15:37:45 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	r(t_lst **alst)
 	t_lst		*start;
 	t_lst		*tmp;
 
-	if (!(*alst)->next)
+	if (!*alst || !(*alst)->next)
 		return ;
 	start = (*alst)->next;
 	tmp = *alst;
@@ -39,7 +39,7 @@ void	rv(t_lst **alst)
 {
 	t_lst		*start;
 
-	if (!(*alst)->next)
+	if (!*alst || !(*alst)->next)
 		return ;
 	start = init_node((*alst)->n);
 	start->next = *alst;
