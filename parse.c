@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:50 by cmiran            #+#    #+#             */
-/*   Updated: 2019/06/05 21:14:12 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/05 22:11:55 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ t_lst	*parse(int ac, char **av, t_lst *start)
 		while (av[i][j])
 		{
 			node->val = ps_atoi(av[i], &j);
-//			while (av[i][j] && ft_isspace(av[i][j]))
-//				j++;
+			while (av[i][j] && ft_isspace(av[i][j]))
+				j++;
 			if (av[i][j] || i + 1 < ac)
 			{
 				node->next = init_node(start->n);
