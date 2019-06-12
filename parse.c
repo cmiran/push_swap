@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:50 by cmiran            #+#    #+#             */
-/*   Updated: 2019/06/06 12:56:39 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/12 10:53:03 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ t_lst	*init_node(int *n)
 {
 	t_lst *node;
 
-	if (!(node = (t_lst *)malloc(sizeof(t_lst))))
+	if (!(node = ft_memalloc(sizeof(t_lst))))
 		return (0);
 	node->val = 0;
 	node->next = 0;
 	if (!n)
 	{
-		if (!(node->n = (int *)malloc(sizeof(int))))
+		if (!(node->n = ft_memalloc(sizeof(int))))
 			return (0);
 		(*node->n) = 1;
 	}
