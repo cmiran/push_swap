@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:50 by cmiran            #+#    #+#             */
-/*   Updated: 2019/06/12 10:53:03 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/12 14:21:26 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ long	ps_atoi(char *str, int *index)
 
 int		check_str(char *str)
 {
+	if (ft_str_is_blank(str))
+		return (0);
 	while (*str)
 	{
 		if (!ft_isdigit(*str) && !ft_isspace(*str) && !ft_issign(*str))
