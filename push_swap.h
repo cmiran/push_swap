@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 19:05:45 by cmiran            #+#    #+#             */
-/*   Updated: 2019/06/06 13:04:21 by cmiran           ###   ########.fr       */
+/*   Updated: 2019/06/20 19:43:56 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 # include "libft/libft.h"
 
-# define SA(a)		init_action(&g_stack, "sa"); s(a);
-# define SB(b)		init_action(&g_stack, "sb"); s(b);
-# define SS(a, b)	init_action(&g_stack, "ss"); ss(a, b);
-# define PA(b, a)	init_action(&g_stack, "pa"); p(b, a);
-# define PB(a, b)	init_action(&g_stack, "pb"); p(a, b);
-# define RA(a)		init_action(&g_stack, "ra"); r(a);
-# define RB(b)		init_action(&g_stack, "rb"); r(b);
-# define RR(a, b)	init_action(&g_stack, "rr"); rr(a, b);
-# define RRA(a)		init_action(&g_stack, "rra"); rv(a);
-# define RRB(b)		init_action(&g_stack, "rrb"); rv(b);
-# define RRR(a, b)	init_action(&g_stack, "rrr"); rrr(a, b);
+# define SA(a)		init_action(&g_stack, "sa"); s(a)
+# define SB(b)		init_action(&g_stack, "sb"); s(b)
+# define SS(a, b)	init_action(&g_stack, "ss"); ss(a, b)
+# define PA(b, a)	init_action(&g_stack, "pa"); p(b, a)
+# define PB(a, b)	init_action(&g_stack, "pb"); p(a, b)
+# define RA(a)		init_action(&g_stack, "ra"); r(a)
+# define RB(b)		init_action(&g_stack, "rb"); r(b)
+# define RR(a, b)	init_action(&g_stack, "rr"); rr(a, b)
+# define RRA(a)		init_action(&g_stack, "rra"); rv(a)
+# define RRB(b)		init_action(&g_stack, "rrb"); rv(b)
+# define RRR(a, b)	init_action(&g_stack, "rrr"); rrr(a, b)
 
 typedef struct	s_node
 {
